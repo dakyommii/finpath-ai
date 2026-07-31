@@ -326,15 +326,20 @@ python3 -m pytest tests/test_e2e_demo_scenario.py tests/test_data_quality.py tes
 
 ### 배포 설정
 
-- **Backend → Render**: `render.yaml` 블루프린트 추가. `./backend/Dockerfile`로 빌드하고,
-  같은 블루프린트의 관리형 Postgres(`finpath-db`)를 `DATABASE_URL`에 자동 연결한다.
-  `LLM_API_KEY`는 Render 대시보드에서 직접 입력해야 한다(`sync: false`).
+- **Backend → Render**: `render.yaml` 블루프린트로 `./backend/Dockerfile` 빌드.
+  **DB는 Render 관리형 Postgres 대신 Neon을 쓴다** — Render의 무료 Postgres는 카드 인증이
+  필요한데(실제 배포 중 실제로 이 프롬프트를 만나서 방향을 바꿈), Neon은 카드 없이 무료
+  Postgres를 만들 수 있다. `DATABASE_URL`, `LLM_API_KEY`는 Render 대시보드에서 직접 입력
+  (`sync: false`).
+- **DB → Neon**: https://neon.tech 에서 프로젝트 생성 후 연결 문자열을 Render의
+  `finpath-backend` 서비스 환경변수 `DATABASE_URL`에 붙여넣는다. pgvector는 Neon도 확장으로
+  지원하지만, 지금 구현은 애플리케이션 계층 코사인 유사도라 필요 없다.
 - **Frontend → Vercel**: Next.js 프로젝트라 별도 설정 파일 없이 저장소만 연결하면 자동
   인식된다. Vercel 프로젝트 환경변수에 `NEXT_PUBLIC_API_BASE_URL`을 배포된 백엔드 URL로
   설정해야 한다.
-- **미검증 상태**: 이 머신은 Docker Desktop을 설치할 수 없고(macOS 13) 클라우드 계정도
-  연결하지 않아서, Render/Vercel에 실제로 배포해보지는 못했다. 설정 파일은 각 플랫폼 공식
-  포맷대로 작성했으니, 실제 배포 전 플랫폼 대시보드에서 한 번 확인이 필요하다.
+- **실제 배포 진행 상황**: 프론트엔드는 실제로 Vercel에 배포 완료
+  (https://finpath-ai-kyo7.vercel.app, Deployment Protection도 꺼서 공개 접근 가능).
+  백엔드는 Render Blueprint를 시도하다 DB 카드 인증 이슈로 Neon 전환 중 — 아직 완료 전.
 
 ## 개발 진행 상태
 

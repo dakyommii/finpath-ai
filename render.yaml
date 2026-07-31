@@ -6,10 +6,10 @@ services:
     dockerContext: ./backend
     healthCheckPath: /health
     envVars:
+      # Render의 관리형 Postgres는 무료 플랜도 카드 인증을 요구해서 대신 Neon(카드 불필요)을
+      # 쓴다. Neon 프로젝트 생성 후 연결 문자열을 Render 대시보드에서 이 값으로 직접 입력한다.
       - key: DATABASE_URL
-        fromDatabase:
-          name: finpath-db
-          property: connectionString
+        sync: false
       - key: LLM_API_KEY
         sync: false
       - key: LLM_API_BASE
@@ -18,7 +18,3 @@ services:
         value: text-embedding-3-small
       - key: ENV
         value: production
-
-databases:
-  - name: finpath-db
-    plan: free
