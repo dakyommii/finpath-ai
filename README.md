@@ -299,6 +299,43 @@ source venv/bin/activate
 python3 -m pytest tests/test_e2e_demo_scenario.py tests/test_data_quality.py tests/test_error_handling.py -v
 ```
 
+## 저장소 & 배포 (Phase 13, 배포 준비만)
+
+발표자료(`docs/presentation_outline.md`)는 만들지 않았다 — 사용자 요청으로 배포 준비만 진행.
+
+### GitHub
+
+이 프로젝트는 `/Users/dalkkommi`(홈 디렉토리) 전체를 루트로 하는 기존 git 저장소
+(`dakyommii/AlgorithmReview`, 알고리즘 문제풀이용) 안의 하위 폴더였다. GitHub Actions CI를
+쓰려면 독립된 저장소가 필요해서, `FinPath/` 자체를 별도 git 저장소로 새로 만들고 새 GitHub
+저장소에 올렸다.
+
+- 저장소: https://github.com/dakyommii/finpath-ai (public)
+- `.env`, `venv/`, `node_modules/`, `.next/`, `.claude/` 등은 각 디렉토리의 `.gitignore`로
+  제외됨 (커밋 전 `git status`로 확인함).
+
+### CI (`.github/workflows/ci.yml`)
+
+- `backend-tests`: GitHub Actions의 `postgres:16` 서비스 컨테이너를 띄우고
+  `python3 -m pytest`로 64건 테스트 실행.
+- `frontend-build`: `npm ci` → `next lint` → `tsc --noEmit` → `next build`.
+- push/PR to `main`마다 자동 실행.
+- `tests/conftest.py`가 `DATABASE_URL`을 5433번 포트로 하드코딩하고 있던 걸
+  `os.environ.setdefault(...)`로 바꿔서, CI가 표준 5432 포트로 준 값을 덮어쓰지 않게 수정함
+  (로컬 개발 환경은 기존처럼 5433 기본값 유지).
+
+### 배포 설정
+
+- **Backend → Render**: `render.yaml` 블루프린트 추가. `./backend/Dockerfile`로 빌드하고,
+  같은 블루프린트의 관리형 Postgres(`finpath-db`)를 `DATABASE_URL`에 자동 연결한다.
+  `LLM_API_KEY`는 Render 대시보드에서 직접 입력해야 한다(`sync: false`).
+- **Frontend → Vercel**: Next.js 프로젝트라 별도 설정 파일 없이 저장소만 연결하면 자동
+  인식된다. Vercel 프로젝트 환경변수에 `NEXT_PUBLIC_API_BASE_URL`을 배포된 백엔드 URL로
+  설정해야 한다.
+- **미검증 상태**: 이 머신은 Docker Desktop을 설치할 수 없고(macOS 13) 클라우드 계정도
+  연결하지 않아서, Render/Vercel에 실제로 배포해보지는 못했다. 설정 파일은 각 플랫폼 공식
+  포맷대로 작성했으니, 실제 배포 전 플랫폼 대시보드에서 한 번 확인이 필요하다.
+
 ## 개발 진행 상태
 
 - Phase 0: 프로젝트 스캐폴딩 완료
@@ -320,5 +357,9 @@ python3 -m pytest tests/test_e2e_demo_scenario.py tests/test_data_quality.py tes
 - Phase 12: 통합 테스트 + 예외 처리 완료, **데모 데이터 고정은 보류**(사용자 결정,
   2026-07-31) (테스트 12건 추가, 총 64건 통과). 검증 중 `SimulationRequest`의 음수값 미검증
   버그 발견 및 수정.
+- Phase 13: **배포 준비만 완료**(발표자료는 보류, 사용자 결정, 2026-08-01). 독립 GitHub
+  저장소 신설(`dakyommii/finpath-ai`) + GitHub Actions CI + Render/Vercel 배포 설정 작성.
+  실제 클라우드 배포는 미검증.
 
-다음은 `FinPath_AI_MVP_개발_실행_가이드.md`의 Phase 13(배포 준비 & 발표 자료)이다.
+FinPath_AI_MVP_개발_실행_가이드.md의 Phase 0~13(발표자료 제외)을 모두 진행했다. 남은 항목은
+Phase 10(AI 상담 챗봇, 보류)과 Phase 13의 발표자료, 그리고 실제 클라우드 배포 검증이다.
