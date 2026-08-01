@@ -299,7 +299,7 @@ source venv/bin/activate
 python3 -m pytest tests/test_e2e_demo_scenario.py tests/test_data_quality.py tests/test_error_handling.py -v
 ```
 
-## 저장소 & 배포 (Phase 13, 배포 준비만)
+## 저장소 & 배포 (Phase 13)
 
 발표자료(`docs/presentation_outline.md`)는 만들지 않았다 — 사용자 요청으로 배포 준비만 진행.
 
@@ -324,22 +324,37 @@ python3 -m pytest tests/test_e2e_demo_scenario.py tests/test_data_quality.py tes
   `os.environ.setdefault(...)`로 바꿔서, CI가 표준 5432 포트로 준 값을 덮어쓰지 않게 수정함
   (로컬 개발 환경은 기존처럼 5433 기본값 유지).
 
-### 배포 설정
+### 배포 설정 — 실제 배포 완료
 
-- **Backend → Render**: `render.yaml` 블루프린트로 `./backend/Dockerfile` 빌드.
-  **DB는 Render 관리형 Postgres 대신 Neon을 쓴다** — Render의 무료 Postgres는 카드 인증이
-  필요한데(실제 배포 중 실제로 이 프롬프트를 만나서 방향을 바꿈), Neon은 카드 없이 무료
-  Postgres를 만들 수 있다. `DATABASE_URL`, `LLM_API_KEY`는 Render 대시보드에서 직접 입력
-  (`sync: false`).
-- **DB → Neon**: https://neon.tech 에서 프로젝트 생성 후 연결 문자열을 Render의
-  `finpath-backend` 서비스 환경변수 `DATABASE_URL`에 붙여넣는다. pgvector는 Neon도 확장으로
-  지원하지만, 지금 구현은 애플리케이션 계층 코사인 유사도라 필요 없다.
-- **Frontend → Vercel**: Next.js 프로젝트라 별도 설정 파일 없이 저장소만 연결하면 자동
-  인식된다. Vercel 프로젝트 환경변수에 `NEXT_PUBLIC_API_BASE_URL`을 배포된 백엔드 URL로
-  설정해야 한다.
-- **실제 배포 진행 상황**: 프론트엔드는 실제로 Vercel에 배포 완료
-  (https://finpath-ai-kyo7.vercel.app, Deployment Protection도 꺼서 공개 접근 가능).
-  백엔드는 Render Blueprint를 시도하다 DB 카드 인증 이슈로 Neon 전환 중 — 아직 완료 전.
+- **Frontend → Vercel**: https://finpath-ai-kyo7.vercel.app (프로덕션, 공개 접근)
+- **Backend → Render**: https://finpath-ai-zgh8.onrender.com (Free 웹서비스)
+- **DB → Neon**: 카드 인증 없는 서버리스 Postgres
+
+**Render는 Blueprint(`render.yaml`)가 아니라 "New Web Service"로 직접 만들었다.** Blueprint는
+DB를 포함하지 않아도 계정에 결제수단 등록을 요구했다(무료 웹서비스 단독 생성은 요구하지
+않음 — 계정에 이미 있던 다른 무료 서비스로 확인). `render.yaml`은 IaC 문서 성격으로
+레포에 남겨두되, 실제로는 Render 대시보드에서 아래처럼 수동 설정했다:
+
+- Root Directory: `backend`, Dockerfile Path: `Dockerfile`, Build Context: `.` (모두
+  `backend` 기준 상대경로 — 처음에 `backend/Dockerfile`로 남겨둬서 `backend/backend`가 되는
+  실수를 했다가 수정함)
+- 환경변수 5개를 Render 대시보드에서 직접 입력: `DATABASE_URL`(Neon 연결 문자열),
+  `LLM_API_KEY=changeme`(오프라인 폴백 유도), `LLM_API_BASE`, `EMBEDDING_MODEL`, `ENV=production`
+- DB 스키마/시드는 로컬에서 `DATABASE_URL`을 Neon으로 바꿔 `alembic upgrade head` +
+  `python3 -m repositories.seed` 실행해 미리 채워둠
+
+**배포 중 실제로 만나서 고친 버그**:
+1. Render 무료 Postgres는 카드 인증 필요 → Neon으로 전환 (위 설명)
+2. Dockerfile Path를 `backend/Dockerfile`로 남겨둬서 `backend/backend/Dockerfile`을 찾다 빌드
+   실패 → Root Directory 설정 시 하위 경로들도 그에 맞게 상대경로로 재조정해야 함을 확인
+3. **CORS**: `main.py`가 `http://localhost:3000`만 허용하고 있어서 배포된 프론트엔드의 모든
+   API 호출이 "Failed to fetch"로 실패함 → `allow_origin_regex`로 이 프로젝트의 모든
+   `*.vercel.app` 도메인을 허용하도록 수정 (커밋 `a65f37d`)
+4. Vercel 팀(`kyo7`)에 Deployment Protection(SSO)이 기본 켜져 있어 로그인 없인 접속 불가
+   → `vercel project protection disable finpath-ai --sso`로 해제
+
+브라우저로 온보딩 → 진단 → 로드맵까지 실제 배포 URL에서 전체 플로우 재현해 확인 완료
+(테스트로 생성한 데이터는 Neon에서 정리함).
 
 ## 개발 진행 상태
 
@@ -362,9 +377,11 @@ python3 -m pytest tests/test_e2e_demo_scenario.py tests/test_data_quality.py tes
 - Phase 12: 통합 테스트 + 예외 처리 완료, **데모 데이터 고정은 보류**(사용자 결정,
   2026-07-31) (테스트 12건 추가, 총 64건 통과). 검증 중 `SimulationRequest`의 음수값 미검증
   버그 발견 및 수정.
-- Phase 13: **배포 준비만 완료**(발표자료는 보류, 사용자 결정, 2026-08-01). 독립 GitHub
-  저장소 신설(`dakyommii/finpath-ai`) + GitHub Actions CI + Render/Vercel 배포 설정 작성.
-  실제 클라우드 배포는 미검증.
+- Phase 13: **실제 배포 완료**(발표자료는 보류, 사용자 결정, 2026-08-01). 독립 GitHub 저장소
+  신설(`dakyommii/finpath-ai`) + GitHub Actions CI(그린) + Vercel(프론트엔드)·Render
+  (백엔드)·Neon(DB)에 실제로 배포하고 브라우저로 전체 플로우 검증까지 완료.
+  - Frontend: https://finpath-ai-kyo7.vercel.app
+  - Backend: https://finpath-ai-zgh8.onrender.com
 
-FinPath_AI_MVP_개발_실행_가이드.md의 Phase 0~13(발표자료 제외)을 모두 진행했다. 남은 항목은
-Phase 10(AI 상담 챗봇, 보류)과 Phase 13의 발표자료, 그리고 실제 클라우드 배포 검증이다.
+FinPath_AI_MVP_개발_실행_가이드.md의 Phase 0~13(발표자료 제외)을 모두 진행했고, 실제
+클라우드 배포까지 마쳤다. 남은 항목은 Phase 10(AI 상담 챗봇, 보류)과 Phase 13의 발표자료뿐이다.
