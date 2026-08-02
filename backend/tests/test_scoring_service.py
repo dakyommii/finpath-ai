@@ -1,8 +1,10 @@
 from datetime import date, timedelta
 from types import SimpleNamespace
 
+import pytest
+
 from models import FinancialProduct, Policy
-from services.scoring_service import score_and_rank
+from services.scoring_service import goal_relevance_component, score_and_rank
 
 
 def _profile(**overrides):
@@ -137,3 +139,34 @@ def test_financial_product_uses_rate_for_benefit(db_session):
     ranked = score_and_rank(db_session, _profile(), goals=[], life_events=[])
     result = next(r for r in ranked if r.title == "테스트적금")
     assert result.score_breakdown["benefit"] == 1.0
+
+
+def test_goal_relevance_keyword_similarity_none_matches_table_only():
+    table_only = goal_relevance_component(["SEED_MONEY"], "청년자산형성")
+    explicit_none = goal_relevance_component(["SEED_MONEY"], "청년자산형성", keyword_similarity=None)
+    assert table_only == explicit_none == 1.0
+
+
+def test_goal_relevance_blends_keyword_similarity_with_table():
+    # SEED_MONEY x 청년자산형성 표값은 1.0. 블렌딩 비율은 0.6(표) : 0.4(유사도).
+    low_similarity = goal_relevance_component(["SEED_MONEY"], "청년자산형성", keyword_similarity=0.0)
+    high_similarity = goal_relevance_component(["SEED_MONEY"], "청년자산형성", keyword_similarity=1.0)
+
+    assert low_similarity == pytest.approx(0.6)
+    assert high_similarity == pytest.approx(1.0)
+    assert low_similarity < high_similarity
+
+
+def test_score_and_rank_accepts_keywords_without_breaking_offline(db_session):
+    # 오프라인 폴백 상태에서는 keyword_similarity_scores가 빈 dict를 반환하므로, keywords를
+    # 넘기든 안 넘기든 결과가 동일해야 한다(회귀 방지).
+    db_session.add(
+        Policy(title="자산형성 정책", category="청년자산형성", eligibility_rules={}, benefit_info={})
+    )
+    db_session.commit()
+
+    profile = _profile()
+    without_keywords = score_and_rank(db_session, profile, goals=[], life_events=[])
+    with_keywords = score_and_rank(db_session, profile, goals=[], life_events=[], keywords=["이직 준비중"])
+
+    assert [c.priority_score for c in without_keywords] == [c.priority_score for c in with_keywords]

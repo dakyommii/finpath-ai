@@ -69,13 +69,15 @@ def _select_candidate(ranked, categories, title_keywords=None, prefer_keyword=No
     return pool[0] if pool else None
 
 
-def generate_roadmap_steps(db, profile, goals, life_events) -> list[RoadmapStepDraft]:
+def generate_roadmap_steps(db, profile, goals, life_events, keywords=None) -> list[RoadmapStepDraft]:
     """12.1의 1~8단계(목표 분류 ~ 예상 실행시점 계산)를 수행해 로드맵 단계 초안을 만든다.
 
     자연어 설명 다듬기(12.1의 10단계, LLM)는 Phase 9에서 별도로 처리하며, 이 함수는
-    Rule/Scoring Engine 결과만으로 결정되는 구조화된 단계만 생성한다.
+    Rule/Scoring Engine 결과만으로 결정되는 구조화된 단계만 생성한다. keywords는 온보딩에서
+    선택한 관심사 키워드로, Scoring Engine의 goal_relevance 보정에만 쓰인다(단계 구성 자체는
+    build_stage_sequence가 profile/goals/life_events만으로 그대로 결정).
     """
-    ranked = score_and_rank(db, profile, goals, life_events)
+    ranked = score_and_rank(db, profile, goals, life_events, keywords)
     stages = build_stage_sequence(profile, goals, life_events)
 
     steps: list[RoadmapStepDraft] = []

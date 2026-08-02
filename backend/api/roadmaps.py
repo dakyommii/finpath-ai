@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from core.db import get_db
-from models import FinancialGoal, FinancialProfile, LifeEvent, Roadmap
+from models import FinancialGoal, FinancialProfile, InterestKeyword, LifeEvent, Roadmap
 from repositories.roadmap_repository import save_roadmap
 from schemas.roadmap import RoadmapDetailResponse, RoadmapGenerateRequest, RoadmapGoalInfo
 from services.roadmap_service import enrich_steps_with_explanations, generate_roadmap_steps
@@ -45,8 +45,12 @@ def generate_roadmap(payload: RoadmapGenerateRequest, db: Session = Depends(get_
 
     goals = db.query(FinancialGoal).filter(FinancialGoal.user_id == payload.user_id).all()
     life_events = db.query(LifeEvent).filter(LifeEvent.user_id == payload.user_id).all()
+    keywords = [
+        k.keyword
+        for k in db.query(InterestKeyword).filter(InterestKeyword.user_id == payload.user_id).all()
+    ]
 
-    steps = generate_roadmap_steps(db, profile, goals, life_events)
+    steps = generate_roadmap_steps(db, profile, goals, life_events, keywords)
     enrich_steps_with_explanations(db, steps)
     primary_goal = _primary_goal(goals)
     roadmap = save_roadmap(db, payload.user_id, primary_goal.id if primary_goal else None, steps)

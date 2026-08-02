@@ -4,6 +4,43 @@ export type HousingType = "MONTHLY_RENT" | "JEONSE" | "OWN";
 export type GoalType = "JEONSE" | "HOME_PURCHASE" | "SEED_MONEY" | "DEBT_REPAYMENT";
 export type LifeEventType = "MARRIAGE" | "CHILDBIRTH" | "RELOCATION" | "JOB_CHANGE";
 
+export type KeywordAxis =
+  | "CAREER"
+  | "ASSET_PRIORITY"
+  | "HOUSING_CONCERN"
+  | "FAMILY_PLAN"
+  | "FINANCIAL_HEALTH";
+
+// 백엔드는 값 검증을 하지 않고 그대로 저장하므로, 이 표에서 벗어난 값을 보내지 않도록
+// UI로만 제어한다 (키워드 임베딩 추천 보강 설계 문서 5.4).
+export const KEYWORD_TAXONOMY: Record<KeywordAxis, { label: string; keywords: string[] }> = {
+  CAREER: {
+    label: "직업/소득 상황",
+    keywords: ["이직 준비중", "프리랜서/1인사업", "창업 준비중", "사회초년생(첫 직장)", "소득이 불규칙함", "안정적인 정규직"],
+  },
+  ASSET_PRIORITY: {
+    label: "자산형성 우선순위",
+    keywords: ["목돈을 빠르게 모으고 싶음", "절세 혜택이 중요함", "장기 노후 준비", "원금 손실 위험은 피하고 싶음", "투자 수익률을 더 신경씀"],
+  },
+  HOUSING_CONCERN: {
+    label: "주거 관련 걱정",
+    keywords: ["전세사기가 걱정됨", "대출 이자 부담이 큼", "보증금 마련이 급함", "월세 부담을 줄이고 싶음", "자가 마련이 최종 목표"],
+  },
+  FAMILY_PLAN: {
+    label: "가족/생애 계획",
+    keywords: ["곧 결혼 예정", "이미 신혼부부", "출산·육아 계획 있음", "1인 가구 유지 예정", "부모님과 함께 거주중"],
+  },
+  FINANCIAL_HEALTH: {
+    label: "재무 건전성 우려",
+    keywords: ["기존 대출을 정리하고 싶음", "신용점수 관리가 필요함", "비상자금이 부족함", "지출 관리가 어려움"],
+  },
+};
+
+export interface InterestKeywordInput {
+  axis: KeywordAxis;
+  keyword: string;
+}
+
 export interface ProfileInput {
   age: number;
   region: string;

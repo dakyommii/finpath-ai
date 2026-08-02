@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from core.db import get_db
-from models import FinancialGoal, FinancialProfile, LifeEvent
+from models import FinancialGoal, FinancialProfile, InterestKeyword, LifeEvent
 from schemas.recommendation import (
     RecommendationGenerateRequest,
     RecommendationItem,
@@ -25,8 +25,12 @@ def generate_recommendations(payload: RecommendationGenerateRequest, db: Session
 
     goals = db.query(FinancialGoal).filter(FinancialGoal.user_id == payload.user_id).all()
     life_events = db.query(LifeEvent).filter(LifeEvent.user_id == payload.user_id).all()
+    keywords = [
+        k.keyword
+        for k in db.query(InterestKeyword).filter(InterestKeyword.user_id == payload.user_id).all()
+    ]
 
-    ranked = score_and_rank(db, profile, goals, life_events)
+    ranked = score_and_rank(db, profile, goals, life_events, keywords)
 
     items = [
         RecommendationItem(

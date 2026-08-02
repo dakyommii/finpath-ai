@@ -1,5 +1,6 @@
 import type {
   GoalFormData,
+  InterestKeywordInput,
   LifeEventFormData,
   ProfileInput,
   ProfileResult,
@@ -34,6 +35,10 @@ export function createGoal(userId: string, input: GoalFormData) {
 
 export function createLifeEvent(userId: string, input: LifeEventFormData) {
   return postJson("/api/v1/life-events", { ...input, user_id: userId });
+}
+
+export function createInterestKeywords(userId: string, keywords: InterestKeywordInput[]) {
+  return postJson("/api/v1/interest-keywords", { user_id: userId, keywords });
 }
 
 export function generateRoadmap(userId: string): Promise<RoadmapDetail> {

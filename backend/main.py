@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api import goals, life_events, profiles, recommendations, roadmaps, simulations
+from api import goals, interest_keywords, life_events, profiles, recommendations, roadmaps, simulations
 
 app = FastAPI(title="FinPath AI API")
 
@@ -20,6 +20,7 @@ app.add_middleware(
 app.include_router(profiles.router)
 app.include_router(goals.router)
 app.include_router(life_events.router)
+app.include_router(interest_keywords.router)
 app.include_router(recommendations.router)
 app.include_router(roadmaps.router)
 app.include_router(simulations.router)

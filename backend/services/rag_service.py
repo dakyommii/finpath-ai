@@ -125,6 +125,26 @@ def _cosine_similarity(a: list[float], b: list[float]) -> float:
     return sum(x * y for x, y in zip(a, b))
 
 
+def keyword_similarity_scores(db, keywords: list[str]) -> dict[str, float]:
+    """사용자가 온보딩에서 선택한 관심사 키워드와 각 정책/금융상품 문서 간 코사인 유사도.
+
+    Scoring Engine의 goal_relevance에 보조 신호로 블렌딩하기 위한 함수다 (키워드 임베딩
+    추천 보강 설계 문서 4.2/4.3 참고). 오프라인 해싱 폴백(LocalHashingEmbeddingProvider)은
+    문자 겹침만 볼 뿐 의미를 이해하지 못해 이 용도로는 부적합하므로, 그 경우 빈 dict를
+    반환한다 — 호출부(scoring_service)는 빈 dict를 받으면 기존 하드코딩 표 점수만 쓰도록
+    설계되어 있어 API 키 없이도 항상 안전하게 동작한다.
+    """
+    if not keywords:
+        return {}
+    provider = get_embedding_provider()
+    if isinstance(provider, LocalHashingEmbeddingProvider):
+        return {}
+
+    interest_vector = provider.embed(" ".join(keywords))
+    index = _build_index(db, provider)
+    return {doc["item_id"]: _cosine_similarity(interest_vector, doc["embedding"]) for doc in index}
+
+
 def retrieve_documents(db, query: str, top_k: int = 3) -> list[RetrievedDocument]:
     """정책/금융상품 설명 텍스트에서 질의와 가장 관련 있는 top_k개 문서를 반환한다.
 

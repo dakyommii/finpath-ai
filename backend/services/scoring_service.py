@@ -75,13 +75,24 @@ def eligibility_component(status: EligibilityStatus) -> float:
     }[status]
 
 
-def goal_relevance_component(goal_types: list[str], category: str) -> float:
+# 임베딩 유사도를 goal_relevance에 블렌딩할 때, 기존 표 대비 얼마나 반영할지 (키워드 임베딩
+# 추천 보강 설계 문서 4.3). keyword_similarity가 없으면(키워드 미선택 또는 오프라인 폴백)
+# 기존 표만 그대로 쓴다 — 하위 호환 유지.
+KEYWORD_BLEND_WEIGHT = 0.4
+
+
+def goal_relevance_component(goal_types: list[str], category: str,
+                              keyword_similarity: Optional[float] = None) -> float:
     if not goal_types:
-        return DEFAULT_RELEVANCE
-    return max(
-        GOAL_CATEGORY_RELEVANCE.get(goal_type, {}).get(category, DEFAULT_RELEVANCE)
-        for goal_type in goal_types
-    )
+        table_score = DEFAULT_RELEVANCE
+    else:
+        table_score = max(
+            GOAL_CATEGORY_RELEVANCE.get(goal_type, {}).get(category, DEFAULT_RELEVANCE)
+            for goal_type in goal_types
+        )
+    if keyword_similarity is None:
+        return table_score
+    return table_score * (1 - KEYWORD_BLEND_WEIGHT) + keyword_similarity * KEYWORD_BLEND_WEIGHT
 
 
 def benefit_component(item_type: str, benefit_info, rate_info) -> float:
@@ -150,10 +161,10 @@ def _build_reason(status: EligibilityStatus, breakdown: dict[str, float]) -> str
 
 def _score_candidate(item_type, item_id, title, category, eligibility_status, eligibility_factors,
                       benefit_info, rate_info, application_end, official_url,
-                      goal_types, life_event_types) -> RankedRecommendation:
+                      goal_types, life_event_types, keyword_similarity=None) -> RankedRecommendation:
     breakdown = {
         "eligibility": eligibility_component(eligibility_status),
-        "goal_relevance": goal_relevance_component(goal_types, category),
+        "goal_relevance": goal_relevance_component(goal_types, category, keyword_similarity),
         "benefit": benefit_component(item_type, benefit_info, rate_info),
         "urgency": urgency_component(application_end),
         "risk_reduction": risk_reduction_component(category),
@@ -190,11 +201,13 @@ def _apply_conflict_penalty(candidates: list[RankedRecommendation]) -> None:
             c.reason += " · 동일 목적 상품 중복 가능성으로 우선순위 조정됨"
 
 
-def score_and_rank(db, profile, goals=None, life_events=None) -> list[RankedRecommendation]:
+def score_and_rank(db, profile, goals=None, life_events=None, keywords=None) -> list[RankedRecommendation]:
     from models import FinancialProduct, Policy
+    from services.rag_service import keyword_similarity_scores
 
     goal_types = [g.goal_type for g in (goals or [])]
     life_event_types = [e.event_type for e in (life_events or [])]
+    similarity_by_item_id = keyword_similarity_scores(db, keywords or [])
 
     candidates: list[RankedRecommendation] = []
 
@@ -214,6 +227,7 @@ def score_and_rank(db, profile, goals=None, life_events=None) -> list[RankedReco
                 official_url=policy.official_url,
                 goal_types=goal_types,
                 life_event_types=life_event_types,
+                keyword_similarity=similarity_by_item_id.get(result.item_id),
             )
         )
 
@@ -233,6 +247,7 @@ def score_and_rank(db, profile, goals=None, life_events=None) -> list[RankedReco
                 official_url=product.official_url,
                 goal_types=goal_types,
                 life_event_types=life_event_types,
+                keyword_similarity=similarity_by_item_id.get(result.item_id),
             )
         )
 

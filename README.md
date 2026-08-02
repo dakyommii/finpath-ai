@@ -356,6 +356,24 @@ DB를 포함하지 않아도 계정에 결제수단 등록을 요구했다(무�
 브라우저로 온보딩 → 진단 → 로드맵까지 실제 배포 URL에서 전체 플로우 재현해 확인 완료
 (테스트로 생성한 데이터는 Neon에서 정리함).
 
+## 키워드 기반 임베딩 추천 보강
+
+설계 문서: `FinPath_AI_키워드_임베딩_추천_설계문서.md`. 온보딩에서 사용자가 선택한 관심사
+키워드를 임베딩해 정책/상품 설명과의 유사도를 `goal_relevance` 점수에 보조 신호로
+블렌딩한다(기존 표 60% + 유사도 40%).
+
+- 신규 테이블 `interest_keywords` (`user_id`, `axis`, `keyword`), API `POST
+  /api/v1/interest-keywords`
+- 온보딩 4단계 구성: 프로필 → 목표 → **관심사 키워드(신규)** → 미래이벤트. 5개 축(직업/소득,
+  자산형성 우선순위, 주거 걱정, 가족계획, 재무건전성) × 5~6개 키워드, 다중선택, 스킵 가능
+- `services/rag_service.keyword_similarity_scores`: 오프라인 해싱 폴백(API 키 없음)일 때는
+  항상 빈 dict를 반환해 **자동으로 기존 로직만 사용** — 하위 호환 100% 유지, 회귀 테스트로 검증
+- `services/scoring_service.goal_relevance_component`가 `keyword_similarity`를 선택적으로
+  받아 블렌딩. Rule Engine(자격 판정)에는 전혀 관여하지 않음
+- 테스트 9건 추가(API 3 + rag_service 3 + scoring_service 3), **전체 73건 통과**
+- 로컬 브라우저로 4단계 온보딩 전체 플로우 실행 및 DB 저장 확인 완료. 실제 임베딩 품질은
+  API 키가 없어 미검증 (가짜 provider로 블렌딩 로직 자체는 단위 테스트로 검증함)
+
 ## 개발 진행 상태
 
 - Phase 0: 프로젝트 스캐폴딩 완료
