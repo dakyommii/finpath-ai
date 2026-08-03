@@ -4,7 +4,7 @@ from services.eligibility_service import EligibilityStatus, evaluate_policy
 
 
 def _profile(**overrides):
-    base = dict(age=27, annual_income=38000000, region="서울", marital_status="SINGLE")
+    base = dict(age=27, annual_income=38000000, region="서울", marital_status="SINGLE", special_status=[])
     base.update(overrides)
     return SimpleNamespace(**base)
 
@@ -73,3 +73,23 @@ def test_no_rules_defaults_to_eligible():
     policy = _Policy("p7", "제한없음", {})
     result = evaluate_policy(_profile(), policy)
     assert result.status == EligibilityStatus.ELIGIBLE
+
+
+def test_target_group_mismatch_not_eligible():
+    policy = _Policy("p8", "국가유공자지원", {"target_group": ["국가유공자"]})
+    result = evaluate_policy(_profile(special_status=[]), policy)
+    assert result.status == EligibilityStatus.NOT_ELIGIBLE
+    assert result.factors["target_group"] == "NOT_MET"
+
+
+def test_target_group_match_eligible():
+    policy = _Policy("p9", "국가유공자지원", {"target_group": ["국가유공자"]})
+    result = evaluate_policy(_profile(special_status=["국가유공자"]), policy)
+    assert result.status == EligibilityStatus.ELIGIBLE
+    assert result.factors["target_group"] == "MET"
+
+
+def test_target_group_not_specified_is_not_applicable():
+    policy = _Policy("p10", "일반정책", {})
+    result = evaluate_policy(_profile(special_status=["장애인"]), policy)
+    assert result.factors["target_group"] == "NOT_APPLICABLE"

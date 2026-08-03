@@ -1,7 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import type { ProfileInput } from "@/types/finpath";
+import { SPECIAL_STATUS_OPTIONS } from "@/types/finpath";
+import type { ProfileInput, SpecialStatus } from "@/types/finpath";
 
 interface Props {
   initialData: ProfileInput | null;
@@ -38,6 +39,7 @@ const DEFAULT_FORM: ProfileInput = {
   total_debt: 0,
   monthly_saving: 1000000,
   credit_score_band: "",
+  special_status: [],
 };
 
 function fieldClass() {
@@ -50,6 +52,16 @@ export default function ProfileForm({ initialData, onSubmit }: Props) {
 
   function update<K extends keyof ProfileInput>(key: K, value: ProfileInput[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
+  }
+
+  function toggleSpecialStatus(status: SpecialStatus) {
+    setForm((prev) => {
+      const current = prev.special_status ?? [];
+      const next = current.includes(status)
+        ? current.filter((s) => s !== status)
+        : [...current, status];
+      return { ...prev, special_status: next };
+    });
   }
 
   function validate(): string[] {
@@ -205,6 +217,34 @@ export default function ProfileForm({ initialData, onSubmit }: Props) {
               required
             />
           </label>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="mb-1 text-base font-semibold">소외계층 여부 (선택)</h2>
+        <p className="mb-3 text-sm text-gray-500">
+          해당하는 항목이 있으면 선택해주세요. 해당 계층 대상 정책도 함께 추천해드립니다. 민감정보이므로
+          선택하지 않아도 다음 단계로 진행할 수 있습니다.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {SPECIAL_STATUS_OPTIONS.map((o) => {
+            const active = (form.special_status ?? []).includes(o.value);
+            return (
+              <button
+                key={o.value}
+                type="button"
+                aria-pressed={active}
+                onClick={() => toggleSpecialStatus(o.value)}
+                className={`rounded-full border px-3 py-1.5 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
+                  active
+                    ? "border-blue-600 bg-blue-600 text-white"
+                    : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                {o.label}
+              </button>
+            );
+          })}
         </div>
       </section>
 

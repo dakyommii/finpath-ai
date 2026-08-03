@@ -15,6 +15,7 @@ class FinancialProfileBase(BaseModel):
     total_debt: Optional[int] = Field(default=None, ge=0)
     monthly_saving: int = Field(ge=0)
     credit_score_band: Optional[str] = None
+    special_status: Optional[list[str]] = None
 
 
 class FinancialProfileCreate(FinancialProfileBase):

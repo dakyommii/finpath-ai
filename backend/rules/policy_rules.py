@@ -52,12 +52,21 @@ def check_homeownership(profile, rules: dict) -> FactorStatus:
     return FactorStatus.NEEDS_CONFIRMATION
 
 
+def check_target_group(profile, rules: dict) -> FactorStatus:
+    target_group = rules.get("target_group")
+    if not target_group:
+        return FactorStatus.NOT_APPLICABLE
+    user_groups = getattr(profile, "special_status", None) or []
+    return FactorStatus.MET if any(g in user_groups for g in target_group) else FactorStatus.NOT_MET
+
+
 FACTOR_CHECKS = {
     "age": check_age,
     "income": check_income,
     "region": check_region,
     "marital_status": check_marital_status,
     "homeownership": check_homeownership,
+    "target_group": check_target_group,
 }
 
 

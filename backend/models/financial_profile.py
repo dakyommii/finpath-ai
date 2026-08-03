@@ -1,7 +1,7 @@
 import uuid
 
 from sqlalchemy import Column, ForeignKey, Integer, String, BigInteger
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import ARRAY, UUID
 
 from core.db import Base
 
@@ -21,3 +21,4 @@ class FinancialProfile(Base):
     total_debt = Column(BigInteger, nullable=True)
     monthly_saving = Column(BigInteger, nullable=False)
     credit_score_band = Column(String, nullable=True)
+    special_status = Column(ARRAY(String), nullable=True)

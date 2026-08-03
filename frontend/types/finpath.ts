@@ -4,6 +4,29 @@ export type HousingType = "MONTHLY_RENT" | "JEONSE" | "OWN";
 export type GoalType = "JEONSE" | "HOME_PURCHASE" | "SEED_MONEY" | "DEBT_REPAYMENT";
 export type LifeEventType = "MARRIAGE" | "CHILDBIRTH" | "RELOCATION" | "JOB_CHANGE";
 
+export type SpecialStatus =
+  | "국가유공자"
+  | "기초생활수급자"
+  | "차상위계층"
+  | "장애인"
+  | "한부모가족"
+  | "다문화가족"
+  | "자립준비청년"
+  | "북한이탈주민";
+
+// 해당 계층 대상 정책(예: 국가유공자 대부지원, 장애인연금 등)을 추천에 포함하기 위한
+// 선택 입력. 민감정보라 온보딩에서 필수 항목으로 강제하지 않는다.
+export const SPECIAL_STATUS_OPTIONS: { value: SpecialStatus; label: string }[] = [
+  { value: "국가유공자", label: "국가유공자/보훈대상자" },
+  { value: "기초생활수급자", label: "기초생활수급자" },
+  { value: "차상위계층", label: "차상위계층" },
+  { value: "장애인", label: "장애인" },
+  { value: "한부모가족", label: "한부모가족" },
+  { value: "다문화가족", label: "다문화가족" },
+  { value: "자립준비청년", label: "자립준비청년(보호종료아동)" },
+  { value: "북한이탈주민", label: "북한이탈주민" },
+];
+
 export type KeywordAxis =
   | "CAREER"
   | "ASSET_PRIORITY"
@@ -52,6 +75,7 @@ export interface ProfileInput {
   total_debt?: number;
   monthly_saving: number;
   credit_score_band?: string;
+  special_status?: SpecialStatus[];
 }
 
 export interface ProfileResult extends ProfileInput {

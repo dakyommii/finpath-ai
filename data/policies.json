@@ -5,8 +5,24 @@
       "title": "청년도약계좌 정부기여금 지원",
       "category": "청년자산형성",
       "description": "청년의 중장기 자산형성을 지원하기 위해 매월 납입액에 비례한 정부기여금을 지급하는 정책성 자산형성 상품입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 34, "income_max": 75000000, "region": null, "marital_status": null, "homeownership": null, "notes": "가구소득 중위 180% 이하 조건 별도 확인 필요"},
-      "benefit_info": {"support_content": "월 최대 70만원 납입, 소득구간별 정부기여금 매칭 지급, 이자소득 비과세", "application_agency": "서민금융진흥원", "required_documents": ["신분증", "소득증빙서류", "가족관계증명서"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 34,
+        "income_max": 75000000,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "가구소득 중위 180% 이하 조건 별도 확인 필요"
+      },
+      "benefit_info": {
+        "support_content": "월 최대 70만원 납입, 소득구간별 정부기여금 매칭 지급, 이자소득 비과세",
+        "application_agency": "서민금융진흥원",
+        "required_documents": [
+          "신분증",
+          "소득증빙서류",
+          "가족관계증명서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/youth-leap-account",
@@ -16,8 +32,24 @@
       "title": "청년내일저축계좌",
       "category": "청년자산형성",
       "description": "근로 중인 저소득 청년이 저축하면 정부가 동일 금액을 매칭 적립해주는 자산형성 지원 사업입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 34, "income_max": 24000000, "region": null, "marital_status": null, "homeownership": null, "notes": "근로 또는 사업소득이 있는 자만 해당"},
-      "benefit_info": {"support_content": "본인 저축액(월 10만원) 대비 정부 매칭금 1~3배 지원, 3년 만기 시 최대 1440만원", "application_agency": "읍면동 주민센터/복지로", "required_documents": ["신분증", "근로확인서류", "통장사본"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 34,
+        "income_max": 24000000,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "근로 또는 사업소득이 있는 자만 해당"
+      },
+      "benefit_info": {
+        "support_content": "본인 저축액(월 10만원) 대비 정부 매칭금 1~3배 지원, 3년 만기 시 최대 1440만원",
+        "application_agency": "읍면동 주민센터/복지로",
+        "required_documents": [
+          "신분증",
+          "근로확인서류",
+          "통장사본"
+        ]
+      },
       "application_start": "2026-05-01",
       "application_end": "2026-05-31",
       "official_url": "https://example.gov.kr/policy/youth-tomorrow-savings",
@@ -27,8 +59,23 @@
       "title": "청년내일채움공제",
       "category": "청년자산형성",
       "description": "중소기업에 취업한 청년의 장기근속과 자산형성을 함께 지원하는 공제 상품입니다.",
-      "eligibility_rules": {"age_min": 15, "age_max": 34, "income_max": null, "region": null, "marital_status": null, "homeownership": null, "notes": "중소기업 정규직 취업자 대상"},
-      "benefit_info": {"support_content": "2년형 기준 본인 400만원 납입 시 기업·정부 지원 합산 1200만원 이상 수령", "application_agency": "고용노동부/중소벤처기업진흥공단", "required_documents": ["재직증명서", "근로계약서"]},
+      "eligibility_rules": {
+        "age_min": 15,
+        "age_max": 34,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "중소기업 정규직 취업자 대상"
+      },
+      "benefit_info": {
+        "support_content": "2년형 기준 본인 400만원 납입 시 기업·정부 지원 합산 1200만원 이상 수령",
+        "application_agency": "고용노동부/중소벤처기업진흥공단",
+        "required_documents": [
+          "재직증명서",
+          "근로계약서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/youth-fill-savings",
@@ -38,8 +85,26 @@
       "title": "서울시 청년수당",
       "category": "지역청년지원",
       "description": "서울 거주 미취업 청년의 구직활동을 지원하기 위한 정기 지원금입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 34, "income_max": null, "region": ["서울"], "marital_status": null, "homeownership": null, "notes": "미취업 상태 및 최근 2년 내 취업경험 조건 확인 필요"},
-      "benefit_info": {"support_content": "월 50만원씩 최대 6개월 지급", "application_agency": "서울시청 청년정책담당관", "required_documents": ["신분증", "졸업증명서", "구직활동계획서"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 34,
+        "income_max": null,
+        "region": [
+          "서울"
+        ],
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "미취업 상태 및 최근 2년 내 취업경험 조건 확인 필요"
+      },
+      "benefit_info": {
+        "support_content": "월 50만원씩 최대 6개월 지급",
+        "application_agency": "서울시청 청년정책담당관",
+        "required_documents": [
+          "신분증",
+          "졸업증명서",
+          "구직활동계획서"
+        ]
+      },
       "application_start": "2026-03-01",
       "application_end": "2026-03-31",
       "official_url": "https://example.seoul.go.kr/policy/youth-allowance",
@@ -49,8 +114,25 @@
       "title": "경기도 청년기본소득",
       "category": "지역청년지원",
       "description": "경기도에 일정 기간 거주한 청년에게 분기별로 지역화폐를 지급하는 기본소득형 지원사업입니다.",
-      "eligibility_rules": {"age_min": 24, "age_max": 24, "income_max": null, "region": ["경기"], "marital_status": null, "homeownership": null, "notes": "만 24세 및 경기도 3년 이상 거주 조건"},
-      "benefit_info": {"support_content": "분기별 25만원, 연간 최대 100만원 지역화폐 지급", "application_agency": "경기도청", "required_documents": ["신분증", "주민등록초본"]},
+      "eligibility_rules": {
+        "age_min": 24,
+        "age_max": 24,
+        "income_max": null,
+        "region": [
+          "경기"
+        ],
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "만 24세 및 경기도 3년 이상 거주 조건"
+      },
+      "benefit_info": {
+        "support_content": "분기별 25만원, 연간 최대 100만원 지역화폐 지급",
+        "application_agency": "경기도청",
+        "required_documents": [
+          "신분증",
+          "주민등록초본"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gg.go.kr/policy/basic-income",
@@ -60,8 +142,25 @@
       "title": "부산 청년희망날개통장",
       "category": "지역청년지원",
       "description": "부산 거주 근로 청년의 자산형성을 지원하는 매칭적립 통장입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 34, "income_max": 35000000, "region": ["부산"], "marital_status": null, "homeownership": null, "notes": null},
-      "benefit_info": {"support_content": "본인 저축액 대비 1:1 매칭, 3년 만기 최대 720만원", "application_agency": "부산시청", "required_documents": ["신분증", "재직증명서"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 34,
+        "income_max": 35000000,
+        "region": [
+          "부산"
+        ],
+        "marital_status": null,
+        "homeownership": null,
+        "notes": null
+      },
+      "benefit_info": {
+        "support_content": "본인 저축액 대비 1:1 매칭, 3년 만기 최대 720만원",
+        "application_agency": "부산시청",
+        "required_documents": [
+          "신분증",
+          "재직증명서"
+        ]
+      },
       "application_start": "2026-04-01",
       "application_end": "2026-04-30",
       "official_url": "https://example.busan.go.kr/policy/hope-wing",
@@ -71,8 +170,25 @@
       "title": "인천 청년미래적립통장",
       "category": "지역청년지원",
       "description": "인천 거주 저소득 청년의 목돈 마련을 지원하는 적립 통장입니다.",
-      "eligibility_rules": {"age_min": 18, "age_max": 39, "income_max": 26000000, "region": ["인천"], "marital_status": null, "homeownership": null, "notes": null},
-      "benefit_info": {"support_content": "월 10만원 저축 시 정부 매칭 10만원, 3년 만기 최대 720만원", "application_agency": "인천시청", "required_documents": ["신분증", "소득증빙서류"]},
+      "eligibility_rules": {
+        "age_min": 18,
+        "age_max": 39,
+        "income_max": 26000000,
+        "region": [
+          "인천"
+        ],
+        "marital_status": null,
+        "homeownership": null,
+        "notes": null
+      },
+      "benefit_info": {
+        "support_content": "월 10만원 저축 시 정부 매칭 10만원, 3년 만기 최대 720만원",
+        "application_agency": "인천시청",
+        "required_documents": [
+          "신분증",
+          "소득증빙서류"
+        ]
+      },
       "application_start": "2026-02-01",
       "application_end": "2026-02-28",
       "official_url": "https://example.incheon.go.kr/policy/future-savings",
@@ -82,8 +198,26 @@
       "title": "청년월세 특별지원",
       "category": "주거비지원",
       "description": "무주택 청년 1인가구의 월세 부담을 완화하기 위한 정부 지원사업입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 34, "income_max": 26000000, "region": null, "marital_status": ["SINGLE"], "homeownership": "무주택", "notes": "보증금 5천만원, 월세 70만원 이하 주택 거주자"},
-      "benefit_info": {"support_content": "월 최대 20만원, 최대 12개월 지원", "application_agency": "국토교통부/복지로", "required_documents": ["임대차계약서", "주민등록등본", "소득증빙서류"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 34,
+        "income_max": 26000000,
+        "region": null,
+        "marital_status": [
+          "SINGLE"
+        ],
+        "homeownership": "무주택",
+        "notes": "보증금 5천만원, 월세 70만원 이하 주택 거주자"
+      },
+      "benefit_info": {
+        "support_content": "월 최대 20만원, 최대 12개월 지원",
+        "application_agency": "국토교통부/복지로",
+        "required_documents": [
+          "임대차계약서",
+          "주민등록등본",
+          "소득증빙서류"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/youth-rent-support",
@@ -93,8 +227,25 @@
       "title": "서울시 청년월세지원",
       "category": "주거비지원",
       "description": "서울 거주 무주택 청년의 월세를 추가로 지원하는 서울시 자체 사업입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 39, "income_max": 30000000, "region": ["서울"], "marital_status": null, "homeownership": "무주택", "notes": null},
-      "benefit_info": {"support_content": "월 20만원, 최대 10개월 지원", "application_agency": "서울시청", "required_documents": ["임대차계약서", "주민등록등본"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 39,
+        "income_max": 30000000,
+        "region": [
+          "서울"
+        ],
+        "marital_status": null,
+        "homeownership": "무주택",
+        "notes": null
+      },
+      "benefit_info": {
+        "support_content": "월 20만원, 최대 10개월 지원",
+        "application_agency": "서울시청",
+        "required_documents": [
+          "임대차계약서",
+          "주민등록등본"
+        ]
+      },
       "application_start": "2026-02-01",
       "application_end": "2026-03-15",
       "official_url": "https://example.seoul.go.kr/policy/youth-monthly-rent",
@@ -104,8 +255,26 @@
       "title": "신혼부부 임차보증금 이자지원",
       "category": "주거비지원",
       "description": "신혼부부의 전월세 보증금 대출 이자 일부를 지원하는 사업입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": 90000000, "region": null, "marital_status": ["MARRIED"], "homeownership": "무주택", "notes": "혼인신고 7년 이내"},
-      "benefit_info": {"support_content": "대출 이자 연 1~2%p 지원", "application_agency": "지방자치단체", "required_documents": ["혼인관계증명서", "임대차계약서", "대출약정서"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": 90000000,
+        "region": null,
+        "marital_status": [
+          "MARRIED"
+        ],
+        "homeownership": "무주택",
+        "notes": "혼인신고 7년 이내"
+      },
+      "benefit_info": {
+        "support_content": "대출 이자 연 1~2%p 지원",
+        "application_agency": "지방자치단체",
+        "required_documents": [
+          "혼인관계증명서",
+          "임대차계약서",
+          "대출약정서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/newlywed-interest-support",
@@ -115,8 +284,23 @@
       "title": "청년구직활동지원금",
       "category": "취업창업지원",
       "description": "미취업 청년의 구직활동에 필요한 비용을 지원하는 사업입니다.",
-      "eligibility_rules": {"age_min": 18, "age_max": 34, "income_max": 40000000, "region": null, "marital_status": null, "homeownership": null, "notes": "졸업 후 2년 이내 미취업자"},
-      "benefit_info": {"support_content": "월 50만원씩 최대 6개월 지급", "application_agency": "고용노동부 워크넷", "required_documents": ["졸업증명서", "구직활동계획서"]},
+      "eligibility_rules": {
+        "age_min": 18,
+        "age_max": 34,
+        "income_max": 40000000,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "졸업 후 2년 이내 미취업자"
+      },
+      "benefit_info": {
+        "support_content": "월 50만원씩 최대 6개월 지급",
+        "application_agency": "고용노동부 워크넷",
+        "required_documents": [
+          "졸업증명서",
+          "구직활동계획서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-11-30",
       "official_url": "https://example.gov.kr/policy/job-seeking-support",
@@ -126,8 +310,23 @@
       "title": "청년창업사관학교",
       "category": "취업창업지원",
       "description": "예비 청년 창업자에게 사업화 자금과 창업 교육을 지원하는 프로그램입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 39, "income_max": null, "region": null, "marital_status": null, "homeownership": null, "notes": "창업 3년 이내 또는 예비창업자"},
-      "benefit_info": {"support_content": "사업화 자금 최대 1억원, 창업 공간 및 멘토링 제공", "application_agency": "중소벤처기업진흥공단", "required_documents": ["사업계획서", "사업자등록증(해당 시)"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 39,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "창업 3년 이내 또는 예비창업자"
+      },
+      "benefit_info": {
+        "support_content": "사업화 자금 최대 1억원, 창업 공간 및 멘토링 제공",
+        "application_agency": "중소벤처기업진흥공단",
+        "required_documents": [
+          "사업계획서",
+          "사업자등록증(해당 시)"
+        ]
+      },
       "application_start": "2026-01-15",
       "application_end": "2026-02-28",
       "official_url": "https://example.gov.kr/policy/youth-startup-academy",
@@ -137,8 +336,23 @@
       "title": "청년창업지원자금(융자)",
       "category": "취업창업지원",
       "description": "청년 창업기업에 저리로 사업자금을 융자 지원하는 정책자금입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 39, "income_max": null, "region": null, "marital_status": null, "homeownership": null, "notes": "업력 7년 이내 중소기업"},
-      "benefit_info": {"support_content": "최대 1억원 이내, 연 2%대 고정금리 융자", "application_agency": "중소벤처기업진흥공단", "required_documents": ["사업자등록증", "재무제표"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 39,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "업력 7년 이내 중소기업"
+      },
+      "benefit_info": {
+        "support_content": "최대 1억원 이내, 연 2%대 고정금리 융자",
+        "application_agency": "중소벤처기업진흥공단",
+        "required_documents": [
+          "사업자등록증",
+          "재무제표"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/youth-startup-fund",
@@ -148,8 +362,24 @@
       "title": "청년전용 버팀목전세자금대출",
       "category": "대출",
       "description": "만 19~34세 청년 단독세대주를 위한 저리 전세자금 대출 상품입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 34, "income_max": 50000000, "region": null, "marital_status": null, "homeownership": "무주택", "notes": "임차보증금 3억원 이하 주택"},
-      "benefit_info": {"support_content": "연 1.8~2.7%, 최대 2억원 한도", "application_agency": "주택도시기금(은행 위탁)", "required_documents": ["임대차계약서", "소득증빙서류", "무주택확인서"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 34,
+        "income_max": 50000000,
+        "region": null,
+        "marital_status": null,
+        "homeownership": "무주택",
+        "notes": "임차보증금 3억원 이하 주택"
+      },
+      "benefit_info": {
+        "support_content": "연 1.8~2.7%, 최대 2억원 한도",
+        "application_agency": "주택도시기금(은행 위탁)",
+        "required_documents": [
+          "임대차계약서",
+          "소득증빙서류",
+          "무주택확인서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/youth-jeonse-loan",
@@ -159,8 +389,23 @@
       "title": "중소기업취업청년 전월세보증금대출",
       "category": "대출",
       "description": "중소기업 재직 청년의 전월세 보증금을 초저금리로 지원하는 대출 상품입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 34, "income_max": 50000000, "region": null, "marital_status": null, "homeownership": "무주택", "notes": "중소·중견기업 재직자 또는 창업자"},
-      "benefit_info": {"support_content": "연 1.2% 고정금리, 최대 1억원 한도", "application_agency": "주택도시기금(은행 위탁)", "required_documents": ["재직증명서", "임대차계약서"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 34,
+        "income_max": 50000000,
+        "region": null,
+        "marital_status": null,
+        "homeownership": "무주택",
+        "notes": "중소·중견기업 재직자 또는 창업자"
+      },
+      "benefit_info": {
+        "support_content": "연 1.2% 고정금리, 최대 1억원 한도",
+        "application_agency": "주택도시기금(은행 위탁)",
+        "required_documents": [
+          "재직증명서",
+          "임대차계약서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/sme-youth-deposit-loan",
@@ -170,8 +415,26 @@
       "title": "신혼부부전용 전세자금대출",
       "category": "대출",
       "description": "혼인 7년 이내 신혼부부를 대상으로 한 저리 전세자금 대출입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": 75000000, "region": null, "marital_status": ["MARRIED"], "homeownership": "무주택", "notes": "혼인신고일 기준 7년 이내"},
-      "benefit_info": {"support_content": "연 1.5~3.3%, 최대 3억원 한도", "application_agency": "주택도시기금(은행 위탁)", "required_documents": ["혼인관계증명서", "임대차계약서", "소득증빙서류"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": 75000000,
+        "region": null,
+        "marital_status": [
+          "MARRIED"
+        ],
+        "homeownership": "무주택",
+        "notes": "혼인신고일 기준 7년 이내"
+      },
+      "benefit_info": {
+        "support_content": "연 1.5~3.3%, 최대 3억원 한도",
+        "application_agency": "주택도시기금(은행 위탁)",
+        "required_documents": [
+          "혼인관계증명서",
+          "임대차계약서",
+          "소득증빙서류"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/newlywed-jeonse-loan",
@@ -181,8 +444,24 @@
       "title": "디딤돌대출(생애최초 주택구입)",
       "category": "대출",
       "description": "무주택 서민의 생애최초 주택구입을 지원하는 정책 모기지 대출입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": 85000000, "region": null, "marital_status": null, "homeownership": "무주택", "notes": "생애최초 주택구입자 우대금리 적용"},
-      "benefit_info": {"support_content": "연 2.15~3.55%, 최대 4억원 한도", "application_agency": "주택도시기금(은행 위탁)", "required_documents": ["매매계약서", "소득증빙서류", "무주택확인서"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": 85000000,
+        "region": null,
+        "marital_status": null,
+        "homeownership": "무주택",
+        "notes": "생애최초 주택구입자 우대금리 적용"
+      },
+      "benefit_info": {
+        "support_content": "연 2.15~3.55%, 최대 4억원 한도",
+        "application_agency": "주택도시기금(은행 위탁)",
+        "required_documents": [
+          "매매계약서",
+          "소득증빙서류",
+          "무주택확인서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/didimdol-loan",
@@ -192,8 +471,23 @@
       "title": "보금자리론",
       "category": "대출",
       "description": "장기 고정금리로 주택구입 자금을 지원하는 정책 모기지 상품입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": 100000000, "region": null, "marital_status": null, "homeownership": null, "notes": "주택가격 6억원 이하"},
-      "benefit_info": {"support_content": "연 3.5~4.0% 고정금리, 최대 3.6억원 한도", "application_agency": "한국주택금융공사", "required_documents": ["매매계약서", "소득증빙서류"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": 100000000,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "주택가격 6억원 이하"
+      },
+      "benefit_info": {
+        "support_content": "연 3.5~4.0% 고정금리, 최대 3.6억원 한도",
+        "application_agency": "한국주택금융공사",
+        "required_documents": [
+          "매매계약서",
+          "소득증빙서류"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/bogeumjari-loan",
@@ -203,8 +497,23 @@
       "title": "햇살론유스",
       "category": "대출",
       "description": "사회초년생과 대학생의 소액 생활자금을 지원하는 서민금융상품입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 34, "income_max": 35000000, "region": null, "marital_status": null, "homeownership": null, "notes": "대학(원)생, 미취업청년, 사회초년생"},
-      "benefit_info": {"support_content": "연 3.6% 이내, 최대 1200만원 한도", "application_agency": "서민금융진흥원", "required_documents": ["재학·재직증명서", "소득증빙서류"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 34,
+        "income_max": 35000000,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "대학(원)생, 미취업청년, 사회초년생"
+      },
+      "benefit_info": {
+        "support_content": "연 3.6% 이내, 최대 1200만원 한도",
+        "application_agency": "서민금융진흥원",
+        "required_documents": [
+          "재학·재직증명서",
+          "소득증빙서류"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/sunshine-loan-youth",
@@ -214,8 +523,23 @@
       "title": "미소금융 창업자금대출",
       "category": "대출",
       "description": "저신용·저소득 예비창업자를 위한 무담보 창업자금 대출입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": null, "region": null, "marital_status": null, "homeownership": null, "notes": "신용등급 하위 또는 기초수급자 우선"},
-      "benefit_info": {"support_content": "연 4.5% 이내, 최대 7000만원 한도", "application_agency": "서민금융진흥원", "required_documents": ["사업계획서", "신용정보동의서"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "신용등급 하위 또는 기초수급자 우선"
+      },
+      "benefit_info": {
+        "support_content": "연 4.5% 이내, 최대 7000만원 한도",
+        "application_agency": "서민금융진흥원",
+        "required_documents": [
+          "사업계획서",
+          "신용정보동의서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/miso-startup-loan",
@@ -225,8 +549,26 @@
       "title": "신혼희망타운 특별공급",
       "category": "신혼부부지원",
       "description": "신혼부부와 예비신혼부부를 위한 공공분양·임대 특별공급 제도입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": 90000000, "region": null, "marital_status": ["MARRIED", "ENGAGED"], "homeownership": "무주택", "notes": "혼인기간 7년 이내 또는 혼인예정자"},
-      "benefit_info": {"support_content": "주변 시세 대비 저렴한 분양가, 장기 저리 모기지 연계", "application_agency": "한국토지주택공사(LH)", "required_documents": ["혼인관계증명서", "무주택확인서"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": 90000000,
+        "region": null,
+        "marital_status": [
+          "MARRIED",
+          "ENGAGED"
+        ],
+        "homeownership": "무주택",
+        "notes": "혼인기간 7년 이내 또는 혼인예정자"
+      },
+      "benefit_info": {
+        "support_content": "주변 시세 대비 저렴한 분양가, 장기 저리 모기지 연계",
+        "application_agency": "한국토지주택공사(LH)",
+        "required_documents": [
+          "혼인관계증명서",
+          "무주택확인서"
+        ]
+      },
       "application_start": "2026-03-01",
       "application_end": "2026-04-30",
       "official_url": "https://example.lh.or.kr/policy/newlywed-hope-town",
@@ -236,8 +578,25 @@
       "title": "신혼부부 매입임대주택",
       "category": "신혼부부지원",
       "description": "신혼부부에게 시세보다 저렴하게 공급하는 공공 매입임대주택입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": 80000000, "region": null, "marital_status": ["MARRIED"], "homeownership": "무주택", "notes": "혼인기간 7년 이내"},
-      "benefit_info": {"support_content": "시세 대비 30~50% 임대료, 최장 20년 거주 가능", "application_agency": "한국토지주택공사(LH)", "required_documents": ["혼인관계증명서", "소득증빙서류"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": 80000000,
+        "region": null,
+        "marital_status": [
+          "MARRIED"
+        ],
+        "homeownership": "무주택",
+        "notes": "혼인기간 7년 이내"
+      },
+      "benefit_info": {
+        "support_content": "시세 대비 30~50% 임대료, 최장 20년 거주 가능",
+        "application_agency": "한국토지주택공사(LH)",
+        "required_documents": [
+          "혼인관계증명서",
+          "소득증빙서류"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.lh.or.kr/policy/newlywed-rental",
@@ -247,8 +606,25 @@
       "title": "신혼부부 결혼자금 대출이자 지원",
       "category": "신혼부부지원",
       "description": "지방자치단체가 신혼부부의 결혼 관련 대출 이자를 일부 지원하는 사업입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": 70000000, "region": null, "marital_status": ["MARRIED"], "homeownership": null, "notes": "혼인신고 2년 이내"},
-      "benefit_info": {"support_content": "대출 이자 연 1%p 지원, 최대 3년간", "application_agency": "지방자치단체", "required_documents": ["혼인관계증명서", "대출약정서"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": 70000000,
+        "region": null,
+        "marital_status": [
+          "MARRIED"
+        ],
+        "homeownership": null,
+        "notes": "혼인신고 2년 이내"
+      },
+      "benefit_info": {
+        "support_content": "대출 이자 연 1%p 지원, 최대 3년간",
+        "application_agency": "지방자치단체",
+        "required_documents": [
+          "혼인관계증명서",
+          "대출약정서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/newlywed-loan-interest",
@@ -258,8 +634,25 @@
       "title": "다자녀·신혼부부 자동차 취득세 감면",
       "category": "신혼부부지원",
       "description": "신혼부부 또는 다자녀 가구의 승용차 구입 시 취득세를 감면하는 제도입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": null, "region": null, "marital_status": ["MARRIED"], "homeownership": null, "notes": "혼인신고 후 1년 이내 또는 자녀 2인 이상"},
-      "benefit_info": {"support_content": "취득세 최대 50% 감면", "application_agency": "지방자치단체(차량등록사업소)", "required_documents": ["혼인관계증명서", "차량매매계약서"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": [
+          "MARRIED"
+        ],
+        "homeownership": null,
+        "notes": "혼인신고 후 1년 이내 또는 자녀 2인 이상"
+      },
+      "benefit_info": {
+        "support_content": "취득세 최대 50% 감면",
+        "application_agency": "지방자치단체(차량등록사업소)",
+        "required_documents": [
+          "혼인관계증명서",
+          "차량매매계약서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/newlywed-car-tax",
@@ -269,8 +662,23 @@
       "title": "부모급여",
       "category": "출산양육지원",
       "description": "만 0~1세 영아를 양육하는 가구에 매월 지급되는 현금성 지원입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": null, "region": null, "marital_status": null, "homeownership": null, "notes": "만 0세: 월 100만원, 만 1세: 월 50만원"},
-      "benefit_info": {"support_content": "만 0세 월 100만원, 만 1세 월 50만원 현금 지급", "application_agency": "읍면동 주민센터/복지로", "required_documents": ["출생신고서", "가족관계증명서"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "만 0세: 월 100만원, 만 1세: 월 50만원"
+      },
+      "benefit_info": {
+        "support_content": "만 0세 월 100만원, 만 1세 월 50만원 현금 지급",
+        "application_agency": "읍면동 주민센터/복지로",
+        "required_documents": [
+          "출생신고서",
+          "가족관계증명서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/parental-allowance",
@@ -280,8 +688,22 @@
       "title": "첫만남이용권",
       "category": "출산양육지원",
       "description": "출생아에게 일시금으로 지급되는 바우처형 지원금입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": null, "region": null, "marital_status": null, "homeownership": null, "notes": "출생아 1인당 지급"},
-      "benefit_info": {"support_content": "1인당 200만원(둘째아 이상 300만원) 국민행복카드 바우처 지급", "application_agency": "읍면동 주민센터/복지로", "required_documents": ["출생신고서"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "출생아 1인당 지급"
+      },
+      "benefit_info": {
+        "support_content": "1인당 200만원(둘째아 이상 300만원) 국민행복카드 바우처 지급",
+        "application_agency": "읍면동 주민센터/복지로",
+        "required_documents": [
+          "출생신고서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/first-meeting-voucher",
@@ -291,8 +713,22 @@
       "title": "아동수당",
       "category": "출산양육지원",
       "description": "만 8세 미만 아동에게 매월 지급되는 보편적 양육 지원금입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": null, "region": null, "marital_status": null, "homeownership": null, "notes": "만 8세 미만 아동 대상"},
-      "benefit_info": {"support_content": "아동 1인당 월 10만원 지급", "application_agency": "읍면동 주민센터/복지로", "required_documents": ["가족관계증명서"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "만 8세 미만 아동 대상"
+      },
+      "benefit_info": {
+        "support_content": "아동 1인당 월 10만원 지급",
+        "application_agency": "읍면동 주민센터/복지로",
+        "required_documents": [
+          "가족관계증명서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/child-allowance",
@@ -302,8 +738,23 @@
       "title": "산모신생아 건강관리 지원",
       "category": "출산양육지원",
       "description": "출산가정에 산모·신생아 건강관리사 방문 서비스를 지원하는 사업입니다.",
-      "eligibility_rules": {"age_min": null, "age_max": null, "income_max": 90000000, "region": null, "marital_status": null, "homeownership": null, "notes": "기준중위소득 150% 이하 우선, 소득 무관 확대 지자체 있음"},
-      "benefit_info": {"support_content": "건강관리사 방문 서비스 이용권 최대 15일분 지원", "application_agency": "보건소/복지로", "required_documents": ["출산증빙서류", "소득증빙서류"]},
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": 90000000,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "notes": "기준중위소득 150% 이하 우선, 소득 무관 확대 지자체 있음"
+      },
+      "benefit_info": {
+        "support_content": "건강관리사 방문 서비스 이용권 최대 15일분 지원",
+        "application_agency": "보건소/복지로",
+        "required_documents": [
+          "출산증빙서류",
+          "소득증빙서류"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/postpartum-care",
@@ -313,8 +764,25 @@
       "title": "대구 청년 전세보증금 반환보증料 지원",
       "category": "지역청년지원",
       "description": "대구 거주 청년의 전세보증금 반환보증 가입료를 지원하는 사업입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 39, "income_max": 50000000, "region": ["대구"], "marital_status": null, "homeownership": "무주택", "notes": null},
-      "benefit_info": {"support_content": "보증료 전액(최대 30만원) 지원", "application_agency": "대구시청", "required_documents": ["임대차계약서", "보증가입증서"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 39,
+        "income_max": 50000000,
+        "region": [
+          "대구"
+        ],
+        "marital_status": null,
+        "homeownership": "무주택",
+        "notes": null
+      },
+      "benefit_info": {
+        "support_content": "보증료 전액(최대 30만원) 지원",
+        "application_agency": "대구시청",
+        "required_documents": [
+          "임대차계약서",
+          "보증가입증서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-11-30",
       "official_url": "https://example.daegu.go.kr/policy/deposit-guarantee",
@@ -324,12 +792,438 @@
       "title": "청년 전세보증금 반환보증 보증료 지원(전국)",
       "category": "주거비지원",
       "description": "청년 임차인의 전세보증금 반환보증 가입 부담을 낮추는 전국 단위 지원사업입니다.",
-      "eligibility_rules": {"age_min": 19, "age_max": 39, "income_max": 60000000, "region": null, "marital_status": null, "homeownership": "무주택", "notes": null},
-      "benefit_info": {"support_content": "보증료 최대 30만원 환급", "application_agency": "국토교통부/지자체", "required_documents": ["임대차계약서", "보증가입증서"]},
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": 39,
+        "income_max": 60000000,
+        "region": null,
+        "marital_status": null,
+        "homeownership": "무주택",
+        "notes": null
+      },
+      "benefit_info": {
+        "support_content": "보증료 최대 30만원 환급",
+        "application_agency": "국토교통부/지자체",
+        "required_documents": [
+          "임대차계약서",
+          "보증가입증서"
+        ]
+      },
       "application_start": "2026-01-01",
       "application_end": "2026-12-31",
       "official_url": "https://example.gov.kr/policy/nationwide-deposit-guarantee",
       "last_verified_at": "2026-07-31T00:00:00"
+    },
+    {
+      "title": "국가유공자 등 대부지원",
+      "category": "보훈대상자지원",
+      "description": "국가유공자·독립유공자·5·18민주유공자 등 보훈대상자 및 선순위 유족에게 주택구입·개량, 농토구입 등 목적의 장기 저금리 대부를 지원합니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "국가유공자"
+        ],
+        "notes": "독립유공자·국가유공자·5·18민주유공자·특수임무유공자 본인 또는 선순위 유족, 보훈보상대상자 본인 또는 배우자만 해당. 국가유공자증으로 자격 확인 필요."
+      },
+      "benefit_info": {
+        "support_content": "주택구입 및 아파트분양(대도시 기준 최대 8천만원), 주택개량(최대 800만원), 농토구입(최대 3천만원), 보철용 차량 구입 대부 등 장기 저금리 대출",
+        "application_agency": "국가보훈부 (관할 보훈(지)청)",
+        "required_documents": [
+          "국가유공자증",
+          "주민등록등본",
+          "대부 목적 증빙서류"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000048",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "보훈(가족)장학금",
+      "category": "보훈대상자지원",
+      "description": "국가유공자 본인 및 자녀·손자녀의 교육비 부담을 줄이기 위해 학기별로 선발해 고등학교~대학교 학자금을 지원합니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "국가유공자"
+        ],
+        "notes": "국가유공자 본인, 자녀, 손자녀까지 지원 대상에 포함. 예산 범위 내 학기별 선발이라 전원 지급이 보장되지 않으며, 접수 기간은 매 학기 반복 공고됨(예시는 2026년 1학기 기준)."
+      },
+      "benefit_info": {
+        "support_content": "고등학교~대학교 학비 전액 또는 일부 지원, 국립대학 특별전형 우선 적용",
+        "application_agency": "국가보훈부 (관할 보훈(지)청 보훈과)",
+        "required_documents": [
+          "국가유공자증",
+          "재학증명서",
+          "가족관계증명서"
+        ]
+      },
+      "application_start": "2026-04-01",
+      "application_end": "2026-04-30",
+      "official_url": "https://www.mpva.go.kr/mpva/selectBbsNttList.do?bbsNo=34&key=147",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "희망저축계좌(자산형성지원사업)",
+      "category": "취약계층자산형성",
+      "description": "생계·의료급여를 받는 기초생활수급자 가구가 근로소득을 저축하면 정부가 근로소득장려금을 매칭 지원해 탈수급 및 자산형성을 돕는 통장사업입니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "기초생활수급자"
+        ],
+        "notes": "생계·의료급여 수급 가구 중 근로·사업소득이 기준 중위소득 40%의 60% 이상이어야 함. 기존 희망키움통장은 모집이 종료되고 희망저축계좌로 개편됨. 세부 조건은 지역 자활센터에서 확인 필요."
+      },
+      "benefit_info": {
+        "support_content": "본인 저축액에 비례한 근로소득장려금 매칭 적립, 3년 유지 시 탈수급 등 조건 충족하면 지급",
+        "application_agency": "보건복지부 / 지역 자활센터",
+        "required_documents": [
+          "수급자 증명서",
+          "근로소득 증빙서류",
+          "통장 사본"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000100",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "장애인 자립자금 대여",
+      "category": "장애인지원",
+      "description": "저소득 등록장애인의 자립 기반 마련을 위해 생업자금, 생업용·출퇴근용 자동차 구입비, 기술훈련비 등을 저리로 대여하는 사업입니다.",
+      "eligibility_rules": {
+        "age_min": 19,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "장애인"
+        ],
+        "notes": "등록장애인(19세 이상)이며 소득인정액이 기준 중위소득 50% 초과 100% 이하 가구여야 함. 생활가계자금·전세자금·학자금 용도로는 대여 불가."
+      },
+      "benefit_info": {
+        "support_content": "무보증대출 가구당 최대 1,200만원(특수설비 자동차는 1,500만원), 담보대출 최대 5,000만원, 거치 5년 후 5년 분할 상환",
+        "application_agency": "보건복지부 (시군구 장애인복지 담당 부서)",
+        "required_documents": [
+          "장애인등록증",
+          "소득·재산 증빙서류",
+          "대여 목적 증빙서류"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000026",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "장애인연금",
+      "category": "장애인지원",
+      "description": "근로 능력이 제한되는 저소득 중증장애인의 생활 안정을 위해 매월 연금을 지급하는 제도입니다.",
+      "eligibility_rules": {
+        "age_min": 18,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "장애인"
+        ],
+        "notes": "18세 이상 중증장애인 중 소득인정액이 선정기준액(2026년 단독가구 140만원, 부부가구 224만원) 이하인 경우 해당."
+      },
+      "benefit_info": {
+        "support_content": "2026년 1월 기준 월 최대 43만 9,700원(기초급여+부가급여) 지급",
+        "application_agency": "보건복지부 / 읍면동 주민센터",
+        "required_documents": [
+          "장애인등록증",
+          "소득·재산 신고서"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.bokjiro.go.kr/pension",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "한부모가족 아동양육비 지원",
+      "category": "한부모가족지원",
+      "description": "저소득 한부모가족의 자녀 양육 부담을 줄이기 위해 아동양육비 등 복지급여를 지급합니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "한부모가족"
+        ],
+        "notes": "기준 중위소득 65% 이하 한부모가족(2026년 기준, 종전 63%에서 확대). 청소년 한부모는 별도 상향 지원 정책 적용."
+      },
+      "benefit_info": {
+        "support_content": "일반 한부모 아동양육비 월 21만원, 청소년 한부모 아동양육비 월 35만원, 추가양육비·학용품비 등 별도 지급",
+        "application_agency": "여성가족부 / 읍면동 주민센터",
+        "required_documents": [
+          "가족관계증명서",
+          "소득·재산 증빙서류"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.mogef.go.kr/sp/fam/sp_fam_f003.do",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "청소년 한부모 자립지원",
+      "category": "한부모가족지원",
+      "description": "만 24세 이하 청소년 한부모의 자녀 양육 및 자립을 지원하기 위한 확대 지원 제도입니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": 24,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "한부모가족"
+        ],
+        "notes": "만 24세 이하 청소년 한부모 가구가 대상이며, 일반 한부모가족 지원보다 아동양육비가 상향 지급됨."
+      },
+      "benefit_info": {
+        "support_content": "아동양육비 월 35만원, 검정고시 학습비·자립촉진수당 등 자립지원 프로그램 연계",
+        "application_agency": "여성가족부 / 읍면동 주민센터",
+        "required_documents": [
+          "가족관계증명서",
+          "소득·재산 증빙서류"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.mogef.go.kr/sp/fam/sp_fam_f007.do",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "디딤씨앗통장(아동발달지원계좌)",
+      "category": "자립준비청년지원",
+      "description": "아동복지시설·가정위탁 보호아동이 만 18세 이전 저축하면 국가가 매칭 지원금을 적립해주고, 자립준비청년이 된 이후 교육·취업훈련·주거 등의 용도로 찾아 쓸 수 있는 자산형성계좌입니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "자립준비청년"
+        ],
+        "notes": "보호대상아동 시기(0~17세)에 가입해 적립한 계좌로, 자립준비청년이 된 이후 사용·인출 안내가 필요한 경우 해당."
+      },
+      "benefit_info": {
+        "support_content": "월 최대 10만원까지 본인 저축액 대비 국가(지자체) 1:2 매칭 적립, 만 18세 이후 교육비·취업훈련비·주거비 등으로 사용 가능",
+        "application_agency": "아동권리보장원 / 보건복지부",
+        "required_documents": [
+          "보호종료 확인서류",
+          "계좌 개설 서류"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.ncrc.or.kr/ncrc/cm/cntnts/cntntsView.do?cntntsId=1142&mi=1035",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "자립준비청년 자립수당",
+      "category": "자립준비청년지원",
+      "description": "아동복지시설·가정위탁 보호가 종료된 자립준비청년에게 안정적인 자립 기반 마련을 위해 매월 자립수당을 지급합니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "자립준비청년"
+        ],
+        "notes": "보호종료일 기준 과거 2년 이상 연속 보호받은 자립준비청년 대상. 보호종료 후 5년간 지급."
+      },
+      "benefit_info": {
+        "support_content": "보호종료 후 5년간 월 50만원 지급",
+        "application_agency": "보건복지부 / 자립지원전담기관",
+        "required_documents": [
+          "보호종료 확인서류",
+          "통장 사본"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.mohw.go.kr/menu.es?mid=a10711040900",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "자립준비청년 자립정착금",
+      "category": "자립준비청년지원",
+      "description": "만 18세 이후 보호가 종료된 자립준비청년의 초기 자립 기반 마련을 위해 지자체가 일시금을 지급합니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "자립준비청년"
+        ],
+        "notes": "지급액은 지자체별로 상이(2025년 기준 서울 2,000만원, 부산·대전·경기·제주·경남 1,500만원, 그 외 지역 1,200만원 수준). 거주 지역 지자체 공고 확인 필요."
+      },
+      "benefit_info": {
+        "support_content": "지자체별 1,200만원~2,000만원 수준의 자립정착금 일시 지급",
+        "application_agency": "보건복지부 / 거주지 관할 지자체",
+        "required_documents": [
+          "보호종료 확인서류",
+          "주민등록등본"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.mohw.go.kr/menu.es?mid=a10711041000",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "다문화가족 방문교육 및 통번역 지원서비스",
+      "category": "다문화가족지원",
+      "description": "결혼이민자 등 다문화가족의 한국 사회 정착을 돕기 위해 한국어교육, 통번역, 가족상담 등을 센터 방문 또는 가정방문 형태로 지원합니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "다문화가족"
+        ],
+        "notes": "결혼이민자 및 다문화가족 구성원이 대상이며, 센터 이용이 어려운 가구는 방문교육으로 대체 가능."
+      },
+      "benefit_info": {
+        "support_content": "한국어교육, 다문화가족통합교육, 통·번역서비스(베트남어·중국어 등), 취업연계 및 가족상담 지원",
+        "application_agency": "여성가족부 / 전국 다문화가족지원센터",
+        "required_documents": [
+          "외국인등록증 또는 국적취득 확인서류",
+          "가족관계증명서"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.liveinkorea.kr/web/index.do",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "주거급여",
+      "category": "주거비지원",
+      "description": "저소득 가구의 주거비 부담을 줄이기 위해 소득인정액이 기준 이하인 가구에 임차료(월세) 등을 현금으로 지원합니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": "무주택",
+        "target_group": [
+          "기초생활수급자",
+          "차상위계층"
+        ],
+        "notes": "소득인정액이 기준 중위소득 48% 이하 가구 대상(2026년 4인 가구 기준 약 311만원). 부양의무자 기준 폐지. 기초생활수급자가 아니어도 소득 기준만 충족하면 신청 가능."
+      },
+      "benefit_info": {
+        "support_content": "전국 4개 급지별 기준임대료 내에서 실제 임차료 지원(2026년 임대료 지원액 인상), 자가가구는 주택 수선 지원",
+        "application_agency": "국토교통부 / 읍면동 주민센터",
+        "required_documents": [
+          "임대차계약서",
+          "소득·재산 증빙서류"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.myhome.go.kr/hws/portal/cont/selectHousingBenefitView.do",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "북한이탈주민 정착지원금",
+      "category": "북한이탈주민지원",
+      "description": "북한이탈주민이 국내 사회에 안정적으로 정착할 수 있도록 통일부가 세대 구성원 수에 따라 정착지원금을 지급합니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "북한이탈주민"
+        ],
+        "notes": "통일부 장관의 보호결정을 받은 북한이탈주민 보호대상자만 해당. 하나원 정착교육 수료 후 지급 절차 시작."
+      },
+      "benefit_info": {
+        "support_content": "세대 구성원 수에 따라 1인 세대 기준 1,500만원부터 최대 6,150만원까지 정착기본금 분할 지급",
+        "application_agency": "통일부 (하나원 / 하나센터)",
+        "required_documents": [
+          "보호대상자 결정서",
+          "주민등록증"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.unikorea.go.kr/unikorea/business/NKDefectorsPolicy/settlement/fund/",
+      "last_verified_at": "2026-08-03T00:00:00"
+    },
+    {
+      "title": "에너지바우처",
+      "category": "취약계층생활지원",
+      "description": "저소득 가구의 냉난방비 부담을 줄이기 위해 전기·가스·지역난방 요금을 바우처 형태로 지원합니다.",
+      "eligibility_rules": {
+        "age_min": null,
+        "age_max": null,
+        "income_max": null,
+        "region": null,
+        "marital_status": null,
+        "homeownership": null,
+        "target_group": [
+          "기초생활수급자",
+          "차상위계층"
+        ],
+        "notes": "2026년부터 지원 대상을 기준 중위소득 50% 이하 가구로 확대. 사용 기간은 매년 하절기/동절기로 구분."
+      },
+      "benefit_info": {
+        "support_content": "전기·가스·지역난방비 월 최대 6만원 수준 바우처 지원(2026년 하절기 사용기간 7월~익년 5월)",
+        "application_agency": "산업통상자원부 / 한국에너지공단",
+        "required_documents": [
+          "수급자 또는 차상위계층 증명서"
+        ]
+      },
+      "application_start": null,
+      "application_end": null,
+      "official_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000072",
+      "last_verified_at": "2026-08-03T00:00:00"
     }
   ]
 }

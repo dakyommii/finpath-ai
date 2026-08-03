@@ -6,6 +6,7 @@ const FACTOR_LABELS: Record<string, string> = {
   region: "지역 조건",
   marital_status: "혼인 조건",
   homeownership: "무주택 조건",
+  target_group: "소외계층 조건",
 };
 
 const FACTOR_STATUS_LABELS: Record<string, string> = {
