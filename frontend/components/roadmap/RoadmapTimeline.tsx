@@ -11,15 +11,16 @@ export default function RoadmapTimeline({ steps, recommendationsByItemId, onSele
   return (
     <ol className="relative space-y-6 border-l-2 border-gray-200 pl-6">
       {steps.map((step) => {
-        const relatedItemId = step.related_items?.[0]?.item_id;
-        const relatedRecommendation = relatedItemId ? recommendationsByItemId.get(relatedItemId) ?? null : null;
+        const relatedRecommendations = (step.related_items ?? [])
+          .map((item) => recommendationsByItemId.get(item.item_id))
+          .filter((item): item is RecommendationItem => Boolean(item));
         return (
           <li key={step.id} className="relative">
             <span className="absolute -left-[1.95rem] top-2 h-3 w-3 rounded-full bg-blue-500" />
             <RoadmapStepCard
               step={step}
-              relatedRecommendation={relatedRecommendation}
-              onViewDetail={() => relatedItemId && onSelectItem(relatedItemId)}
+              relatedRecommendations={relatedRecommendations}
+              onViewDetail={onSelectItem}
             />
           </li>
         );

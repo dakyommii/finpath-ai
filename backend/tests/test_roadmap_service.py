@@ -116,6 +116,37 @@ def test_higher_monthly_saving_shortens_goal_stage_duration(db_session):
     assert faster_end < slower_end
 
 
+def test_stage_shows_up_to_three_eligible_candidates(db_session):
+    db_session.add_all(
+        [
+            FinancialProduct(
+                provider="A은행", title="A적금", category="적금",
+                product_rules={}, rate_info={"max_rate": 5.0},
+            ),
+            FinancialProduct(
+                provider="B은행", title="B적금", category="적금",
+                product_rules={}, rate_info={"max_rate": 4.0},
+            ),
+            FinancialProduct(
+                provider="C은행", title="C적금", category="적금",
+                product_rules={}, rate_info={"max_rate": 3.0},
+            ),
+            FinancialProduct(
+                provider="D은행", title="D적금", category="적금",
+                product_rules={}, rate_info={"max_rate": 2.0},
+            ),
+        ]
+    )
+    db_session.commit()
+
+    steps = generate_roadmap_steps(db_session, _profile(), goals=[], life_events=[])
+    saving_step = next(s for s in steps if s.title == "월 자동저축 구조 설정")
+
+    assert len(saving_step.related_items) == 3
+    titles = [item["title"] for item in saving_step.related_items]
+    assert titles == ["A적금", "B적금", "C적금"]
+
+
 def test_goal_without_target_amount_falls_back_to_fixed_duration(db_session):
     _seed_common_candidates(db_session)
     goals = [SimpleNamespace(goal_type="HOME_PURCHASE", target_amount=None)]

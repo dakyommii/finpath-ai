@@ -4,11 +4,11 @@ import type { RecommendationItem, RoadmapStep } from "@/types/finpath";
 
 interface Props {
   step: RoadmapStep;
-  relatedRecommendation: RecommendationItem | null;
-  onViewDetail: () => void;
+  relatedRecommendations: RecommendationItem[];
+  onViewDetail: (itemId: string) => void;
 }
 
-export default function RoadmapStepCard({ step, relatedRecommendation, onViewDetail }: Props) {
+export default function RoadmapStepCard({ step, relatedRecommendations, onViewDetail }: Props) {
   return (
     <div className="rounded-lg border border-gray-200 bg-white p-5 text-gray-900">
       <div className="flex items-start justify-between gap-3">
@@ -31,21 +31,28 @@ export default function RoadmapStepCard({ step, relatedRecommendation, onViewDet
         </p>
       )}
 
-      {relatedRecommendation && (
-        <div className="mt-4 flex items-center justify-between rounded border border-gray-100 bg-gray-50 p-3">
-          <div>
-            <p className="text-sm font-medium">{relatedRecommendation.title}</p>
-            <div className="mt-1 flex items-center gap-2">
-              <EligibilityBadge status={relatedRecommendation.eligibility_status} />
-              <span className="text-xs text-gray-500">추천 점수 {relatedRecommendation.priority_score}점</span>
+      {relatedRecommendations.length > 0 && (
+        <div className="mt-4 space-y-2">
+          {relatedRecommendations.map((item) => (
+            <div
+              key={item.item_id}
+              className="flex items-center justify-between rounded border border-gray-100 bg-gray-50 p-3"
+            >
+              <div>
+                <p className="text-sm font-medium">{item.title}</p>
+                <div className="mt-1 flex items-center gap-2">
+                  <EligibilityBadge status={item.eligibility_status} />
+                  <span className="text-xs text-gray-500">추천 점수 {item.priority_score}점</span>
+                </div>
+              </div>
+              <button
+                onClick={() => onViewDetail(item.item_id)}
+                className="shrink-0 rounded border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              >
+                자세히 보기
+              </button>
             </div>
-          </div>
-          <button
-            onClick={onViewDetail}
-            className="shrink-0 rounded border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-          >
-            자세히 보기
-          </button>
+          ))}
         </div>
       )}
     </div>

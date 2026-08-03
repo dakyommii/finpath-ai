@@ -50,9 +50,12 @@ class RoadmapStepDraft:
     sources: list[dict]
 
 
-def _select_candidate(ranked, categories, title_keywords=None, prefer_keyword=None):
+MAX_CANDIDATES_PER_STAGE = 3
+
+
+def _select_candidates(ranked, categories, title_keywords=None, prefer_keyword=None, limit=MAX_CANDIDATES_PER_STAGE):
     if not categories:
-        return None
+        return []
     pool = [
         r
         for r in ranked
@@ -64,9 +67,9 @@ def _select_candidate(ranked, categories, title_keywords=None, prefer_keyword=No
             pool = keyword_matches
     if prefer_keyword:
         preferred = [r for r in pool if prefer_keyword in r.title]
-        if preferred:
-            pool = preferred
-    return pool[0] if pool else None
+        others = [r for r in pool if prefer_keyword not in r.title]
+        pool = preferred + others
+    return pool[:limit]
 
 
 def generate_roadmap_steps(db, profile, goals, life_events, keywords=None) -> list[RoadmapStepDraft]:
@@ -85,7 +88,7 @@ def generate_roadmap_steps(db, profile, goals, life_events, keywords=None) -> li
     first_incomplete_assigned = False
 
     for order, stage in enumerate(stages, start=1):
-        candidate = _select_candidate(ranked, stage.categories, stage.title_keywords, stage.prefer_keyword)
+        candidates = _select_candidates(ranked, stage.categories, stage.title_keywords, stage.prefer_keyword)
 
         completed = stage.key == "EMERGENCY_FUND" and profile.liquid_assets >= EMERGENCY_FUND_TARGET
 
@@ -105,14 +108,15 @@ def generate_roadmap_steps(db, profile, goals, life_events, keywords=None) -> li
         related_items = []
         sources = []
         reason = stage.action_template
-        if candidate:
+        if candidates:
+            primary = candidates[0]
             related_items = [
-                {"item_type": candidate.item_type, "item_id": candidate.item_id, "title": candidate.title}
+                {"item_type": c.item_type, "item_id": c.item_id, "title": c.title} for c in candidates
             ]
             sources = [
-                {"item_type": candidate.item_type, "item_id": candidate.item_id, "title": candidate.title}
+                {"item_type": primary.item_type, "item_id": primary.item_id, "title": primary.title}
             ]
-            reason = f"{stage.action_template} 추천 상품: {candidate.title} ({candidate.reason})"
+            reason = f"{stage.action_template} 추천 상품: {primary.title} ({primary.reason})"
         elif stage.categories:
             reason = f"{stage.action_template} 현재 조건에 맞는 상품을 찾지 못해 조건 변경 시 다시 확인이 필요합니다."
 
