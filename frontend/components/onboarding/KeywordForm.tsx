@@ -52,8 +52,9 @@ export default function KeywordForm({ initialData, onBack, onSubmit }: Props) {
                   <button
                     key={keyword}
                     type="button"
+                    aria-pressed={active}
                     onClick={() => toggle(axis, keyword)}
-                    className={`rounded-full border px-3 py-1.5 text-sm ${
+                    className={`rounded-full border px-3 py-1.5 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
                       active
                         ? "border-blue-600 bg-blue-600 text-white"
                         : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
@@ -69,13 +70,17 @@ export default function KeywordForm({ initialData, onBack, onSubmit }: Props) {
       )}
 
       <div className="flex gap-3">
-        <button type="button" onClick={onBack} className="flex-1 rounded border py-2 font-semibold">
+        <button
+          type="button"
+          onClick={onBack}
+          className="flex-1 rounded border py-2 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        >
           이전
         </button>
         <button
           type="button"
           onClick={() => onSubmit(selected)}
-          className="flex-1 rounded bg-blue-600 py-2 font-semibold text-white hover:bg-blue-700"
+          className="flex-1 rounded bg-blue-600 py-2 font-semibold text-white hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
         >
           다음
         </button>

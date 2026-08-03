@@ -85,13 +85,18 @@ export default function LifeEventForm({ onBack, onSubmit, submitting }: Props) {
       )}
 
       <div className="flex gap-3">
-        <button type="button" onClick={onBack} className="flex-1 rounded border py-2 font-semibold" disabled={submitting}>
+        <button
+          type="button"
+          onClick={onBack}
+          disabled={submitting}
+          className="flex-1 rounded border py-2 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        >
           이전
         </button>
         <button
           type="submit"
           disabled={submitting}
-          className="flex-1 rounded bg-blue-600 py-2 font-semibold text-white hover:bg-blue-700 disabled:opacity-50"
+          className="flex-1 rounded bg-blue-600 py-2 font-semibold text-white hover:bg-blue-700 disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
         >
           {submitting ? "생성 중..." : "로드맵 생성하기"}
         </button>

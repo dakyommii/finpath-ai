@@ -57,7 +57,7 @@ export default function ScenarioControls({ baselineMonthlySaving, baselineAnnual
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded bg-blue-600 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50"
+        className="w-full rounded bg-blue-600 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
       >
         {loading ? "계산 중..." : "시뮬레이션 실행"}
       </button>

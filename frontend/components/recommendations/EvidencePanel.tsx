@@ -87,7 +87,12 @@ export default function EvidencePanel({ item }: Props) {
       {item.official_url && (
         <p className="text-gray-600">
           공식 출처:{" "}
-          <a href={item.official_url} target="_blank" rel="noreferrer" className="font-medium text-blue-600 underline">
+          <a
+            href={item.official_url}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded font-medium text-blue-600 underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+          >
             {item.official_url}
           </a>
         </p>

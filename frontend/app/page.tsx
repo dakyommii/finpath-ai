@@ -97,7 +97,7 @@ export default function Home() {
           </div>
           <button
             onClick={handleReset}
-            className="rounded border border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 hover:bg-gray-100"
+            className="rounded border border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
             처음부터 다시 입력
           </button>
@@ -108,7 +108,8 @@ export default function Home() {
             <button
               key={key}
               onClick={() => setView(key)}
-              className={`rounded px-4 py-2 text-sm font-semibold ${
+              aria-current={view === key ? "page" : undefined}
+              className={`rounded px-4 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
                 view === key ? "bg-blue-600 text-white" : "border border-gray-300 bg-white text-gray-600 hover:bg-gray-100"
               }`}
             >

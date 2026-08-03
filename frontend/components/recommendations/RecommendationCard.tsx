@@ -19,7 +19,10 @@ export default function RecommendationCard({ item, onClose }: Props) {
             <span className="text-xs text-gray-500">추천 점수 {item.priority_score}점</span>
           </div>
         </div>
-        <button onClick={onClose} className="shrink-0 text-sm text-gray-400 hover:text-gray-600">
+        <button
+          onClick={onClose}
+          className="shrink-0 rounded text-sm text-gray-400 hover:text-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        >
           닫기
         </button>
       </div>

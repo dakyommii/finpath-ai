@@ -106,9 +106,7 @@
 
 **적용 사례 (잘한 점)**: 상태는 항상 아이콘 + 색 + 텍스트 라벨 3중으로 인코딩되어 색에만 의존하지 않는다.
 
-**현재 격차**
-- 버튼/링크에 커스텀 `focus-visible` 스타일이 없어 브라우저 기본값에 의존 중.
-- 아이콘 전용 버튼(닫기 × 등) 일부에 `aria-label` 누락.
+**적용 사례 (수정 완료)**: 모든 버튼/링크에 `focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`를 적용해 키보드 포커스가 항상 명확히 보이도록 함. 탭 버튼에는 `aria-current`, 키워드 칩에는 `aria-pressed`도 추가. 실제 텍스트 없는 아이콘 전용 버튼은 코드 전체에 없음 — 모든 버튼이 이미 텍스트 라벨을 갖고 있어 `aria-label` 문제는 재확인 결과 해당 없음.
 
 ### 2.6 근접성 (Proximity)
 관련 있는 요소는 붙이고, 없는 요소는 떼어놓는다.
@@ -145,14 +143,14 @@
 
 ## 4. 발견한 이슈
 
-가이드를 만들며 코드를 훑다가 실제로 발견해 그 자리에서 수정한 것 2건, 아직 열려있는 것 2건.
+가이드를 만들며 코드를 훑다가 실제로 발견해 그 자리에서 수정한 것 3건, 아직 열려있는 것 1건.
 
 | 상태 | 내용 | 파일 |
 |---|---|---|
 | ✅ 수정됨 | `StatusBadge.tsx` 안에서 `IN_PROGRESS`는 `amber-*`, `NEEDS_CONFIRMATION`은 `yellow-*`를 써서 같은 의미(경고)가 다른 색으로 보이던 문제. `yellow-*`로 통일. | `components/roadmap/StatusBadge.tsx` |
 | ✅ 수정됨 | Geist 폰트가 `layout.tsx`에서 로드만 되고, `globals.css`의 `body { font-family: Arial }`가 그 변수를 참조하지 않아 실제로는 Arial로 렌더링되던 문제. `var(--font-geist-sans)` 참조로 수정. | `app/globals.css` |
+| ✅ 수정됨 | 버튼·링크·탭에 커스텀 `focus-visible` 스타일이 없어 브라우저 기본값에 의존하던 문제. 전 컴포넌트에 포커스 링 클래스를 추가하고 실제 키보드 탐색(Tab)으로 렌더링 확인. | `components/**/*.tsx`, `app/page.tsx` |
 | ⬜ 미해결 | 다크모드는 "지원"이 아니라 "회피"에 가깝다. 카드를 전부 `bg-white`로 고정해 다크모드 버그를 막은 것뿐, 실제 다크 테마 디자인은 없음. 아티팩트의 다크 토큰이 출발점이 될 수 있음. | — |
-| ⬜ 미해결 | 버튼·칩·탭에 커스텀 `focus-visible` 스타일 없음 — 키보드 사용자 경험 개선 여지. | — |
 
 ---
 

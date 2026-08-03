@@ -210,7 +210,7 @@ export default function ProfileForm({ initialData, onSubmit }: Props) {
 
       <button
         type="submit"
-        className="w-full rounded bg-blue-600 py-2 font-semibold text-white hover:bg-blue-700"
+        className="w-full rounded bg-blue-600 py-2 font-semibold text-white hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
       >
         다음
       </button>
