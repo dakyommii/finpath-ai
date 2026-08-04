@@ -261,7 +261,8 @@
         "income_max": 90000000,
         "region": null,
         "marital_status": [
-          "MARRIED"
+          "MARRIED",
+          "ENGAGED"
         ],
         "homeownership": "무주택",
         "notes": "혼인신고 7년 이내"
@@ -421,7 +422,8 @@
         "income_max": 75000000,
         "region": null,
         "marital_status": [
-          "MARRIED"
+          "MARRIED",
+          "ENGAGED"
         ],
         "homeownership": "무주택",
         "notes": "혼인신고일 기준 7년 이내"
@@ -584,7 +586,8 @@
         "income_max": 80000000,
         "region": null,
         "marital_status": [
-          "MARRIED"
+          "MARRIED",
+          "ENGAGED"
         ],
         "homeownership": "무주택",
         "notes": "혼인기간 7년 이내"
@@ -612,7 +615,8 @@
         "income_max": 70000000,
         "region": null,
         "marital_status": [
-          "MARRIED"
+          "MARRIED",
+          "ENGAGED"
         ],
         "homeownership": null,
         "notes": "혼인신고 2년 이내"
@@ -640,7 +644,8 @@
         "income_max": null,
         "region": null,
         "marital_status": [
-          "MARRIED"
+          "MARRIED",
+          "ENGAGED"
         ],
         "homeownership": null,
         "notes": "혼인신고 후 1년 이내 또는 자녀 2인 이상"
