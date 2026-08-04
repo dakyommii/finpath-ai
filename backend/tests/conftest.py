@@ -12,6 +12,7 @@ from fastapi.testclient import TestClient
 
 from core.db import Base, SessionLocal, engine
 from main import app
+from services.rag_service import clear_embedding_index_cache
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -27,6 +28,9 @@ def clean_tables():
     with engine.begin() as conn:
         for table in reversed(Base.metadata.sorted_tables):
             conn.execute(table.delete())
+    # _build_index 캐시가 테스트 간에 남아있으면 이전 테스트의 정책/상품 데이터로
+    # 만든 임베딩 인덱스를 다음 테스트가 그대로 재사용해버릴 수 있다.
+    clear_embedding_index_cache()
 
 
 @pytest.fixture()

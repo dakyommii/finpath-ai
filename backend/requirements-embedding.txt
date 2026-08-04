@@ -1,0 +1,12 @@
+# 로컬 sentence-transformer 기반 진짜 의미 임베딩(local_semantic 모드)을 쓰려는 경우에만
+# 별도로 설치. 기본 requirements.txt에는 포함하지 않는다 — torch를 함께 끌고 와서 설치
+# 용량/시간이 크게 늘고, 실측 기준 모델 로딩만으로 프로세스 메모리를 700MB 이상 쓴다.
+# Render 무료 티어(RAM 512MB)에서는 확실히 OOM으로 죽는다 — 최소 1GB 이상 메모리가
+# 보장되는 환경(Render 유료 플랜 등)에서만 켤 것.
+#
+# 설치: pip install -r requirements-embedding.txt
+# 활성화: .env에서 EMBEDDING_MODE=local_semantic
+# numpy<2 고정: torch(CPU 휠)가 numpy 1.x ABI로 빌드되어 있어 numpy 2.x와 함께 쓰면
+# "RuntimeError: Numpy is not available"로 인코딩이 실패한다(직접 재현 확인).
+sentence-transformers==3.0.1
+numpy<2

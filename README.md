@@ -249,6 +249,34 @@ python3 -m pytest tests/test_rag_service.py tests/test_llm_service.py -v
 애플리케이션 계층 코사인 유사도로 부족해지면 그때 `rag_service._build_index`/
 `retrieve_documents`만 pgvector 기반으로 교체하면 된다.
 
+### 로컬 의미 임베딩 (`EMBEDDING_MODE=local_semantic`, API 키 불필요)
+
+LLM API 키 없이도 `LocalHashingEmbeddingProvider`(문자 2-gram 해싱)보다 훨씬 나은 의미
+매칭이 필요하면, 로컬 sentence-transformer로 전환할 수 있다.
+
+- `LocalSentenceEmbeddingProvider` (`services/rag_service.py`): 한국어 STS 특화 모델
+  `jhgan/ko-sroberta-multitask`를 CPU에서 실행. 실제 비교 테스트 결과:
+  - 다국어 범용 모델(`paraphrase-multilingual-MiniLM-L12-v2`)은 "전세사기가 걱정됨" 같은
+    한국어 짧은 문장에서 무관한 정책(산모신생아 건강관리)이 관련 정책(전세보증금
+    반환보증)보다 높은 점수를 받는 등 순위가 부정확했음.
+  - 한국어 특화 모델로 교체하니 관련 정책 2건이 0.48~0.50, 무관한 정책들이 0.14~0.22로
+    명확히 분리됨. 실제 카탈로그(64건) 대상 "전세사기가 걱정됨" 질의에서도 "청년
+    전세보증금 반환보증 보증료 지원"이 정확히 1순위로 나옴을 확인.
+- `_build_index`에 provider별 프로세스-생애주기 캐시를 추가해, 요청마다 정책+상품 64건
+  전체를 다시 인코딩하지 않도록 함(캐시 없으면 로드맵 생성이 오히려 더 느려짐).
+- **메모리 주의**: 모델 로딩만으로 프로세스 RSS가 실측 약 700MB 이상. **Render 무료
+  티어(RAM 512MB)에서는 절대 켜지 말 것** — OOM으로 확실히 죽는다. 최소 1GB 이상 메모리가
+  보장되는 환경에서만 사용.
+- 설치가 무겁고(torch 포함) 기본 배포 환경을 건드리면 안 되므로, `requirements.txt`가
+  아니라 별도 `requirements-embedding.txt`로 분리했고 `EMBEDDING_MODE` 기본값은 `hashing`
+  이다 — 이 기능은 명시적으로 켜지 않는 한 기존 배포(Render 무료 티어)에 아무 영향도 주지
+  않는다.
+
+```bash
+pip install -r requirements-embedding.txt   # torch 포함, 설치 용량/시간 큼
+# .env에서 EMBEDDING_MODE=local_semantic
+```
+
 ## 금융 목표 시뮬레이션 (Phase 11)
 
 - `services/simulation_service.py` — 저장된 로드맵(`roadmap.steps`, "변경 전")과, 프로필의

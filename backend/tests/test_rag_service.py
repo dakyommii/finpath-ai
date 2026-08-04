@@ -5,6 +5,7 @@ from services import rag_service
 from services.rag_service import (
     EmbeddingProvider,
     LocalHashingEmbeddingProvider,
+    get_embedding_provider,
     keyword_similarity_scores,
     retrieve_documents,
 )
@@ -92,3 +93,59 @@ def test_keyword_similarity_scores_uses_real_provider_when_available(db_session,
     scores = keyword_similarity_scores(db_session, ["이직 준비중"])
 
     assert scores[str(policy.id)] > scores[str(unrelated.id)]
+
+
+def test_local_semantic_mode_falls_back_when_package_missing(monkeypatch):
+    # sentence-transformers가 설치되어 있지 않은 환경(기본 requirements.txt만 설치된
+    # CI/운영 환경)에서 EMBEDDING_MODE=local_semantic으로 설정해도 죽지 않고 해싱 폴백으로
+    # 안전하게 넘어가야 한다. 이 머신에 패키지가 실제로 설치되어 있는지와 무관하게
+    # 결정적으로 검증하기 위해 로더 자체가 ImportError를 던지도록 강제한다.
+    monkeypatch.setattr("core.config.settings.llm_api_key", "changeme")
+    monkeypatch.setattr("core.config.settings.embedding_mode", "local_semantic")
+
+    def _raise_import_error():
+        raise ImportError("sentence-transformers not installed")
+
+    monkeypatch.setattr(rag_service, "_load_sentence_model", _raise_import_error)
+
+    provider = get_embedding_provider()
+
+    assert isinstance(provider, LocalHashingEmbeddingProvider)
+
+
+def test_local_semantic_mode_selected_when_package_available(monkeypatch):
+    from services.rag_service import LocalSentenceEmbeddingProvider
+
+    monkeypatch.setattr("core.config.settings.llm_api_key", "changeme")
+    monkeypatch.setattr("core.config.settings.embedding_mode", "local_semantic")
+    monkeypatch.setattr(rag_service, "_load_sentence_model", lambda: object())
+
+    provider = get_embedding_provider()
+
+    assert isinstance(provider, LocalSentenceEmbeddingProvider)
+
+
+def test_build_index_is_cached_per_provider_type(db_session):
+    db_session.add(
+        Policy(title="캐시 확인용 정책", category="청년자산형성", eligibility_rules={}, benefit_info={})
+    )
+    db_session.commit()
+
+    first = rag_service._build_index(db_session, LocalHashingEmbeddingProvider())
+    second = rag_service._build_index(db_session, LocalHashingEmbeddingProvider())
+
+    assert first is second
+
+
+def test_clear_embedding_index_cache_forces_rebuild(db_session):
+    db_session.add(
+        Policy(title="캐시 초기화 확인용 정책", category="청년자산형성", eligibility_rules={}, benefit_info={})
+    )
+    db_session.commit()
+
+    first = rag_service._build_index(db_session, LocalHashingEmbeddingProvider())
+    rag_service.clear_embedding_index_cache()
+    second = rag_service._build_index(db_session, LocalHashingEmbeddingProvider())
+
+    assert first is not second
+    assert first == second
